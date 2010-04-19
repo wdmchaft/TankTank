@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "Sparrow.h" 
+#import "Entity.h"
 
 @interface Game : SPStage
 {
 	SPSprite *sprite;
+	Entity *entity;
 }
 
 @property (nonatomic, retain) SPSprite *sprite;
+@property (nonatomic, retain) Entity *entity;
 
 @end

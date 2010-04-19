@@ -11,6 +11,7 @@
 @implementation Game
 
 @synthesize sprite;
+@synthesize entity;
 
 - (id)initWithWidth:(float)width height:(float)height
 {
@@ -35,16 +36,25 @@
 		[self addEventListener:@selector(onEnterFrame:) 
 					  atObject:self 
 					   forType:SP_EVENT_TYPE_ENTER_FRAME];
-        
+		
+		entity = [[Entity alloc] init];
+		entity.direction = DIRECTION_UP;
+        NSLog(@"Entity direction: %@", [entity directionToString]);
     }
     return self;
 }
 
 - (void)onEnterFrame:(SPEnterFrameEvent*) event {
-	NSLog(@"Time passed since last frame: %f", event.passedTime);
+	//NSLog(@"Time passed since last frame: %f", event.passedTime);
 	if (sprite.x < (self.width - sprite.width)) {
 		sprite.x = sprite.x + 1;
 	}
+}
+
+- (void) dealloc {
+	self.sprite = nil;
+	self.entity = nil;
+	[super dealloc];
 }
 
 @end
