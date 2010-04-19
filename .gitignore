@@ -1,0 +1,6 @@
+# os x metadata
+.DS_Store
+
+# xcode user specific settings
+*.mode1v3
+*.pbxuser
