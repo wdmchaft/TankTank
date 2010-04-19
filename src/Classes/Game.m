@@ -22,32 +22,21 @@
 		
 		SPImage *tank_right = [SPImage imageWithTexture:[atlas textureByName:@"tank_right"]];
 		
-		sprite = [SPSprite sprite];
-		[sprite addChild:tank_right];
-		[self addChild:sprite];
-		
-		float spriteWidth = sprite.width;
-		sprite.x = 100;
-		sprite.y = 100;
-		NSLog(@"Sprite width: %@", [NSNumber numberWithFloat:spriteWidth]);
-		NSLog(@"Stage width: %@", [NSNumber numberWithFloat:width]);
-		NSLog(@"Sprite x: %d", sprite.x);
+		entity = [Entity entityWithX:100 y:100 direction:DIRECTION_RIGHT velocity:1 image:tank_right];
+		[self addChild:entity];
 		
 		[self addEventListener:@selector(onEnterFrame:) 
 					  atObject:self 
 					   forType:SP_EVENT_TYPE_ENTER_FRAME];
 		
-		entity = [[Entity alloc] init];
-		entity.direction = DIRECTION_UP;
-        NSLog(@"Entity direction: %@", [entity directionToString]);
     }
     return self;
 }
 
 - (void)onEnterFrame:(SPEnterFrameEvent*) event {
-	//NSLog(@"Time passed since last frame: %f", event.passedTime);
-	if (sprite.x < (self.width - sprite.width)) {
-		sprite.x = sprite.x + 1;
+	
+	if (entity.x < (self.width - entity.width)) {
+		entity.x = entity.x + 1;
 	}
 }
 

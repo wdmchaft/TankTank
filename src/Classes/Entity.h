@@ -13,11 +13,15 @@
 @interface Entity : SPSprite {
 	DirectionType direction;
 	float velocity;
+	SPImage* image;
 }
 
 @property (nonatomic, assign) DirectionType direction;
 @property (nonatomic, assign) float velocity;
+@property (nonatomic, retain) SPImage* image;
 
+- (id) initWithX:(float)x y:(float)y direction:(DirectionType)direction velocity:(float)velocity image:(SPImage*)image;
 - (NSString*) directionToString;
 
++ (Entity*) entityWithX:(float)x y:(float)y direction:(DirectionType)direction velocity:(float)velocity image:(SPImage*)image;
 @end
