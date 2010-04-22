@@ -35,13 +35,12 @@
     return self;
 }
 
-- (void) onEnterFrame:(SPEnterFrameEvent*) event {	
+- (void) onEnterFrame:(SPEnterFrameEvent*) event {
 	if (entity.x < entity.destination.x)
 		entity.x++;
 	else if (entity.x > entity.destination.x)
 		entity.x--;
-	
-	if (entity.y < entity.destination.y)
+	else if (entity.y < entity.destination.y)
 		entity.y++;
 	else if (entity.y > entity.destination.y)
 		entity.y--;
