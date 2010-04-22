@@ -84,7 +84,11 @@
 		SPImage *newImage = [images objectForKey:[NSString stringWithFormat:@"tank_%@", [self directionToString:newFacing]]];
 		NSLog(@"Old image: %@. New Image %@", oldImage, newImage);
 		self.direction = newFacing;
-		[self swapChild:oldImage withChild:newImage];
+		[self removeChild:oldImage];
+		[self addChild:newImage];
+		
+		// TODO figure out why swapChild doesn't work, but removeChild/addChild does
+		//[self swapChild:oldImage withChild:newImage];
 	}
 	
 }
