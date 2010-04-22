@@ -10,8 +10,7 @@
 
 @implementation Game
 
-@synthesize sprite;
-@synthesize entity;
+@synthesize sprite, tank;
 
 - (id)initWithWidth:(float)width height:(float)height
 {
@@ -21,8 +20,8 @@
 		
 		SPImage *tank_right = [SPImage imageWithTexture:[atlas textureByName:@"tank_right"]];
 		
-		entity = [Entity entityWithX:10 y:100 direction:DIRECTION_RIGHT velocity:1 image:tank_right];
-		[self addChild:entity];
+		tank = [Tank tankWithX:10 y:100 direction:DIRECTION_RIGHT velocity:1 image:tank_right];
+		[self addChild:tank];
 		
 		[self addEventListener:@selector(onEnterFrame:) 
 					  atObject:self 
@@ -36,14 +35,14 @@
 }
 
 - (void) onEnterFrame:(SPEnterFrameEvent*) event {
-	if (entity.x < entity.destination.x)
-		entity.x++;
-	else if (entity.x > entity.destination.x)
-		entity.x--;
-	else if (entity.y < entity.destination.y)
-		entity.y++;
-	else if (entity.y > entity.destination.y)
-		entity.y--;
+	if (tank.x < tank.destination.x)
+		tank.x++;
+	else if (tank.x > tank.destination.x)
+		tank.x--;
+	else if (tank.y < tank.destination.y)
+		tank.y++;
+	else if (tank.y > tank.destination.y)
+		tank.y--;
 }
 
 - (void) onTouch:(SPTouchEvent*) event {
@@ -51,14 +50,14 @@
 									  andPhase:SPTouchPhaseBegan] anyObject];
     if (touch) {
         SPPoint *touchPosition = [touch locationInSpace:self];
-		entity.destination = touchPosition;
-        NSLog(@"Touched position (%f, %f)", entity.destination.x, entity.destination.y);
+		tank.destination = touchPosition;
+        NSLog(@"Touched position (%f, %f)", tank.destination.x, tank.destination.y);
     }	
 }
 
 - (void) dealloc {
 	self.sprite = nil;
-	self.entity = nil;
+	self.tank = nil;
 	[super dealloc];
 }
 
