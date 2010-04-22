@@ -15,7 +15,7 @@
 - (id)initWithWidth:(float)width height:(float)height
 {
     if (self = [super initWithWidth:width height:height]) {
-		tank = [Tank tankWithX:10 y:100 direction:DIRECTION_RIGHT velocity:1];
+		tank = [Tank tankWithX:10 y:100 direction:DIRECTION_WEST velocity:1];
 		[self addChild:tank];
 		
 		[self addEventListener:@selector(onEnterFrame:) 
@@ -30,14 +30,7 @@
 }
 
 - (void) onEnterFrame:(SPEnterFrameEvent*) event {
-	if (tank.x < tank.destination.x)
-		tank.x++;
-	else if (tank.x > tank.destination.x)
-		tank.x--;
-	else if (tank.y < tank.destination.y)
-		tank.y++;
-	else if (tank.y > tank.destination.y)
-		tank.y--;
+	[tank move];
 }
 
 - (void) onTouch:(SPTouchEvent*) event {
@@ -45,8 +38,8 @@
 									  andPhase:SPTouchPhaseBegan] anyObject];
     if (touch) {
         SPPoint *touchPosition = [touch locationInSpace:self];
+		NSLog(@"Touched position (%f, %f)", touchPosition.x, touchPosition.y);
 		tank.destination = touchPosition;
-        NSLog(@"Touched position (%f, %f)", tank.destination.x, tank.destination.y);
     }	
 }
 

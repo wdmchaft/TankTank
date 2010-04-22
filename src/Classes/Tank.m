@@ -24,14 +24,18 @@
 		NSLog(@"found %d textures.", atlas.count);
 		
 		images = [[NSMutableDictionary alloc] init];
-		[images setObject:[SPImage imageWithTexture:[atlas textureByName:@"tank_right"]] forKey:@"tank_right"];
-		[images setObject:[SPImage imageWithTexture:[atlas textureByName:@"tank_left"]] forKey:@"tank_left"];
-		[images setObject:[SPImage imageWithTexture:[atlas textureByName:@"tank_up"]] forKey:@"tank_up"];
-		[images setObject:[SPImage imageWithTexture:[atlas textureByName:@"tank_down"]] forKey:@"tank_down"];
+		NSArray* textureNames = [[NSArray alloc] initWithObjects:@"tank_east", @"tank_west", @"tank_north", @"tank_south", nil];
+		for (NSString* textureName in textureNames) {
+			[images setObject:[SPImage imageWithTexture:[atlas textureByName:textureName]] 
+					   forKey:textureName];
+		}
+		[textureNames release];
+		[atlas release];
+		
 		NSLog(@"Images: %@", images);
 		[self addChild:[images objectForKey:[NSString stringWithFormat:@"tank_%@", [self directionToString]]]];
 		
-		[atlas release];
+		
 	}
 	return self;
 }
@@ -41,7 +45,7 @@
 		self.x = _x;
 		self.y = _y;
 	}
-	return [self initWithX:_x y:_y direction:DIRECTION_UP velocity:0.0f];
+	return [self initWithX:_x y:_y direction:DIRECTION_NORTH velocity:0.0f];
 }
 
 - (id) init {
@@ -52,17 +56,17 @@
 {
 	NSString *result = [NSString string];
 	switch (direction) {
-		case DIRECTION_UP:
-			result = @"up";
+		case DIRECTION_NORTH:
+			result = @"north";
 			break;
-		case DIRECTION_RIGHT:
-			result = @"right";
+		case DIRECTION_WEST:
+			result = @"west";
 			break;
-		case DIRECTION_DOWN:
-			result = @"down";
+		case DIRECTION_SOUTH:
+			result = @"south";
 			break;
-		case DIRECTION_LEFT:
-			result = @"left";
+		case DIRECTION_EAST:
+			result = @"east";
 			break;
 		default:
 			NSLog(@"Error. Direction not set!");
@@ -70,22 +74,46 @@
 	return result;
 }
 
-+ (Tank*) tankWithX:(float) x y:(float) y direction:(DirectionType) direction velocity:(float) velocity {
-	return [[[Tank alloc] initWithX:x y:y direction:direction velocity:velocity] autorelease];
-}
-
-+ (Tank*) tankWithX:(float) x y:(float) y {
-	return [[[Tank alloc] initWithX:x y:y direction:DIRECTION_UP velocity:0.0f] autorelease];
-}
-
-+ (Tank*) tank {
-	return [[[Tank alloc] initWithX:0.0f y:0.0f] autorelease];
+- (void) move
+{
+	if (self.destination.x > self.x)
+	{
+		self.x++;
+	} 
+	else if (self.destination.x < self.x)
+	{
+		self.x--;
+	} 
+	else if (self.destination.y > self.y)
+	{
+		self.y++;
+	} 
+	else if (self.destination.y < self.y)
+	{
+		self.y--;
+	}
+	else
+	{
+		NSLog(@"Destination and Tank position should match");
+	}
 }
 
 - (void) dealloc {
 	self.destination = nil;
 	self.images = nil;
 	[super dealloc];
-}	
+}
+
++ (Tank*) tankWithX:(float) x y:(float) y direction:(DirectionType) direction velocity:(float) velocity {
+	return [[[Tank alloc] initWithX:x y:y direction:direction velocity:velocity] autorelease];
+}
+
++ (Tank*) tankWithX:(float) x y:(float) y {
+	return [[[Tank alloc] initWithX:x y:y direction:DIRECTION_NORTH velocity:0.0f] autorelease];
+}
+
++ (Tank*) tank {
+	return [[[Tank alloc] initWithX:0.0f y:0.0f] autorelease];
+}
    
 @end
