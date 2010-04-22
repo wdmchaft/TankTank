@@ -33,7 +33,7 @@
 		[atlas release];
 		
 		NSLog(@"Images: %@", images);
-		[self addChild:[images objectForKey:[NSString stringWithFormat:@"tank_%@", [self directionToString]]]];
+		[self addChild:[images objectForKey:[NSString stringWithFormat:@"tank_%@", [self directionToString:self.direction]]]];
 		
 		
 	}
@@ -52,10 +52,47 @@
 	return [self initWithX:0.0f y:0.0f];
 }
 
-- (NSString*) directionToString 
+- (void) move
+{
+	if (self.destination.x > self.x)
+	{
+		self.x++;
+		[self face:DIRECTION_WEST];
+	} 
+	else if (self.destination.x < self.x)
+	{
+		self.x--;
+		[self face:DIRECTION_EAST];
+	} 
+	else if (self.destination.y > self.y)
+	{
+		self.y++;
+		[self face:DIRECTION_SOUTH];
+	} 
+	else if (self.destination.y < self.y)
+	{
+		self.y--;
+		[self face:DIRECTION_NORTH];
+	}
+}
+
+- (void) face:(DirectionType)newFacing
+{
+	if (newFacing != self.direction) {
+		NSLog(@"Changing facing from %@ to: %@", [self directionToString:self.direction], [self directionToString:newFacing]);
+		SPImage *oldImage = [images objectForKey:[NSString stringWithFormat:@"tank_%@", [self directionToString:self.direction]]];
+		SPImage *newImage = [images objectForKey:[NSString stringWithFormat:@"tank_%@", [self directionToString:newFacing]]];
+		NSLog(@"Old image: %@. New Image %@", oldImage, newImage);
+		self.direction = newFacing;
+		[self swapChild:oldImage withChild:newImage];
+	}
+	
+}
+
+- (NSString*) directionToString:(DirectionType)facing
 {
 	NSString *result = [NSString string];
-	switch (direction) {
+	switch (facing) {
 		case DIRECTION_NORTH:
 			result = @"north";
 			break;
@@ -74,29 +111,6 @@
 	return result;
 }
 
-- (void) move
-{
-	if (self.destination.x > self.x)
-	{
-		self.x++;
-	} 
-	else if (self.destination.x < self.x)
-	{
-		self.x--;
-	} 
-	else if (self.destination.y > self.y)
-	{
-		self.y++;
-	} 
-	else if (self.destination.y < self.y)
-	{
-		self.y--;
-	}
-	else
-	{
-		NSLog(@"Destination and Tank position should match");
-	}
-}
 
 - (void) dealloc {
 	self.destination = nil;

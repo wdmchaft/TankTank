@@ -27,7 +27,9 @@
 - (id) initWithX:(float)x y:(float)y direction:(DirectionType)direction velocity:(float)velocity;
 - (id) initWithX:(float)_x y:(float)_y;
 - (id) init;
-- (NSString*) directionToString;
+- (void) move;
+- (void) face:(DirectionType)newFacing;
+- (NSString*) directionToString:(DirectionType)facing;
 
 + (Tank*) tankWithX:(float)x y:(float)y direction:(DirectionType)direction velocity:(float)velocity;
 + (Tank*) tankWithX:(float)x y:(float)y;
