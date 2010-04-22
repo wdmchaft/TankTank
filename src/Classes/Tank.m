@@ -12,18 +12,14 @@
 @implementation Tank
 @synthesize direction, velocity, image, destination;
 
-- (id) initWithX:(float) x 
-			   y:(float) y 
-	   direction:(DirectionType) _direction 
-		velocity:(float) _velocity 
-		   image:(SPImage*) _image; {
+- (id) initWithX:(float) _x y:(float) _y direction:(DirectionType) _direction velocity:(float) _velocity image:(SPImage*) _image; {
 	if (self = [super init]) {
-		self.x = x;
-		self.y = y;
+		self.x = _x;
+		self.y = _y;
 		self.direction = _direction;
 		self.velocity = _velocity;
 		self.image = _image;
-		self.destination = [SPPoint pointWithX:x y:y];
+		self.destination = [SPPoint pointWithX:_x y:_y];
 		[self addChild:image];
 	}
 	return self;
