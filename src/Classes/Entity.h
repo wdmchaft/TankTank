@@ -10,15 +10,18 @@
 #import "Sparrow.h"
 #import "DirectionType.h"
 
-@interface Entity : SPSprite {
+@interface Entity : SPSprite 
+{
 	DirectionType direction;
 	float velocity;
 	SPImage* image;
+	SPPoint* destination;
 }
 
 @property (nonatomic, assign) DirectionType direction;
 @property (nonatomic, assign) float velocity;
 @property (nonatomic, retain) SPImage* image;
+@property (nonatomic, retain) SPPoint* destination;
 
 - (id) initWithX:(float)x y:(float)y direction:(DirectionType)direction velocity:(float)velocity image:(SPImage*)image;
 - (NSString*) directionToString;

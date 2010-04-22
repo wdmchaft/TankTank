@@ -10,19 +10,20 @@
 
 
 @implementation Entity
-@synthesize direction;
-@synthesize velocity;
-@synthesize image;
+@synthesize direction, velocity, image, destination;
 
-- (id) initWithX:(float)x y:(float)y direction:(DirectionType)_direction velocity:(float)_velocity image:(SPImage*)_image;
-{
-	if (self = [super init])
-	{
-		x = x;
-		y = y;
-		direction = _direction;
-		velocity = _velocity;
-		image = _image;
+- (id) initWithX:(float) x 
+			   y:(float) y 
+	   direction:(DirectionType) _direction 
+		velocity:(float) _velocity 
+		   image:(SPImage*) _image; {
+	if (self = [super init]) {
+		self.x = x;
+		self.y = y;
+		self.direction = _direction;
+		self.velocity = _velocity;
+		self.image = _image;
+		self.destination = [SPPoint pointWithX:x y:y];
 		[self addChild:image];
 	}
 	return self;
@@ -50,14 +51,17 @@
 	return result;
 }
 
-+ (Entity*) entityWithX:(float)x y:(float)y direction:(DirectionType)direction velocity:(float)velocity image:(SPImage*)image
-{
++ (Entity*) entityWithX:(float) x 
+					  y:(float) y 
+			  direction:(DirectionType) direction 
+			   velocity:(float) velocity 
+				  image:(SPImage*) image {
 	return [[[Entity alloc] initWithX:x	y:y direction:direction velocity:velocity image:image] autorelease];
 }
 
-- (void) dealloc 
-{
+- (void) dealloc {
 	self.image = nil;
+	self.destination = nil;
 	[super dealloc];
 }	
    
