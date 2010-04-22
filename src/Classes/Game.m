@@ -15,12 +15,7 @@
 - (id)initWithWidth:(float)width height:(float)height
 {
     if (self = [super initWithWidth:width height:height]) {
-		SPTextureAtlas *atlas = [SPTextureAtlas atlasWithContentsOfFile:@"atlas.xml"];
-		NSLog(@"found %d textures.", atlas.count);
-		
-		SPImage *tank_right = [SPImage imageWithTexture:[atlas textureByName:@"tank_right"]];
-		
-		tank = [Tank tankWithX:10 y:100 direction:DIRECTION_RIGHT velocity:1 image:tank_right];
+		tank = [Tank tankWithX:10 y:100 direction:DIRECTION_RIGHT velocity:1];
 		[self addChild:tank];
 		
 		[self addEventListener:@selector(onEnterFrame:) 

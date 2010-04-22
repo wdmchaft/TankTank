@@ -14,17 +14,22 @@
 {
 	DirectionType direction;
 	float velocity;
-	SPImage* image;
 	SPPoint* destination;
+	NSMutableDictionary* images;
 }
 
 @property (nonatomic, assign) DirectionType direction;
 @property (nonatomic, assign) float velocity;
-@property (nonatomic, retain) SPImage* image;
 @property (nonatomic, retain) SPPoint* destination;
+@property (nonatomic, retain) NSMutableDictionary* images;
 
-- (id) initWithX:(float)x y:(float)y direction:(DirectionType)direction velocity:(float)velocity image:(SPImage*)image;
+// designated initializer
+- (id) initWithX:(float)x y:(float)y direction:(DirectionType)direction velocity:(float)velocity;
+- (id) initWithX:(float)_x y:(float)_y;
+- (id) init;
 - (NSString*) directionToString;
 
-+ (Tank*) tankWithX:(float)x y:(float)y direction:(DirectionType)direction velocity:(float)velocity image:(SPImage*)image;
++ (Tank*) tankWithX:(float)x y:(float)y direction:(DirectionType)direction velocity:(float)velocity;
++ (Tank*) tankWithX:(float)x y:(float)y;
++ (Tank*) tank;
 @end
