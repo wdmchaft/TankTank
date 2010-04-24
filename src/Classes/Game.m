@@ -15,7 +15,7 @@
 - (id)initWithWidth:(float)width height:(float)height
 {
     if (self = [super initWithWidth:width height:height]) {
-		tank = [Tank tankWithX:10 y:100 direction:DIRECTION_WEST velocity:1];
+		self.tank = [Tank tankWithX:10 y:100 direction:DIRECTION_WEST velocity:1];
 		[self addChild:tank];
 		
 		[self addEventListener:@selector(onEnterFrame:) 
@@ -29,23 +29,29 @@
     return self;
 }
 
-- (void) onEnterFrame:(SPEnterFrameEvent*) event {
-	[tank move];
+- (void) onEnterFrame:(SPEnterFrameEvent*) event 
+{
+	[self.tank move];
 }
 
-- (void) onTouch:(SPTouchEvent*) event {
+- (void) onTouch:(SPTouchEvent*) event 
+{
 	SPTouch *touch = [[event touchesWithTarget:self 
 									  andPhase:SPTouchPhaseBegan] anyObject];
-    if (touch) {
+    if (touch) 
+	{
         SPPoint *touchPosition = [touch locationInSpace:self];
 		NSLog(@"Touched position (%f, %f)", touchPosition.x, touchPosition.y);
-		tank.destination = touchPosition;
+		self.tank.destination = touchPosition;
     }	
 }
 
-- (void) dealloc {
+- (void) dealloc 
+{
 	self.sprite = nil;
 	self.tank = nil;
+	[sprite release];
+	[tank release];
 	[super dealloc];
 }
 

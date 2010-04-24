@@ -24,14 +24,13 @@
 @property (nonatomic, retain) NSMutableDictionary* images;
 
 // designated initializer
-- (id) initWithX:(float)x y:(float)y direction:(DirectionType)direction velocity:(float)velocity;
-- (id) initWithX:(float)_x y:(float)_y;
+- (id) initWithX:(float)anX y:(float)anY direction:(DirectionType)aDirection velocity:(float)aVelocity;
+- (id) initWithX:(float)anX y:(float)anY;
 - (id) init;
 - (void) move;
-- (void) face:(DirectionType)newFacing;
-- (NSString*) directionToString:(DirectionType)facing;
+- (void) changeDirection:(DirectionType)newDirection;
 
-+ (Tank*) tankWithX:(float)x y:(float)y direction:(DirectionType)direction velocity:(float)velocity;
-+ (Tank*) tankWithX:(float)x y:(float)y;
++ (Tank*) tankWithX:(float)anX y:(float)anY direction:(DirectionType)aDirection velocity:(float)aVelocity;
++ (Tank*) tankWithX:(float)anX y:(float)anY;
 + (Tank*) tank;
 @end
