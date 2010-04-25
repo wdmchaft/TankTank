@@ -21,6 +21,8 @@
 		self.direction = aDirection;
 		self.velocity = aVelocity;
 		self.destination = [SPPoint pointWithX:anX y:anY];
+		self.scaleX = DG_SCALE_AMOUNT;
+		self.scaleY = DG_SCALE_AMOUNT;
 		
 		SPTextureAtlas* atlas = [[SPTextureAtlas alloc] initWithContentsOfFile:@"atlas.xml"];
 		NSLog(@"found %d textures.", atlas.count);
@@ -32,16 +34,21 @@
 								 [NSNumber numberWithInt:DIRECTION_SOUTH],
 								 [NSNumber numberWithInt:DIRECTION_EAST], nil];
 					
-		for (NSNumber* textureNumber in textureNumbers) 
+		for (NSNumber* oneTextureNumber in textureNumbers) 
 		{
-			[self.images setObject:[SPImage imageWithTexture:[atlas textureByName:[NSString stringWithFormat:@"tank_dir_%@", textureNumber]]] 
-					   forKey:[NSString stringWithFormat:@"tank_dir_%@", textureNumber]];
+			[self.images setObject:[SPImage imageWithTexture:[atlas textureByName:[NSString stringWithFormat:@"tank_dir_%@", oneTextureNumber]]] 
+					   forKey:[NSString stringWithFormat:@"tank_dir_%@", oneTextureNumber]];
 		}
 		[textureNumbers release];
 		[atlas release];
 		
 		NSLog(@"Images: %@", self.images);
-		[self addChild:[self.images objectForKey:[NSString stringWithFormat:@"tank_dir_%d", (int)self.direction]]];		
+		[self addChild:[self.images objectForKey:[NSString stringWithFormat:@"tank_dir_%d", (int)self.direction]]];
+		NSLog(@"Width: %f", self.width);
+		
+		[self addEventListener:@selector(onTouch:) 
+					  atObject:self 
+					   forType:SP_EVENT_TYPE_TOUCH];
 	}
 	return self;
 }
@@ -88,10 +95,7 @@
 - (void) changeDirection:(DGDirection)newDirection
 {
 	if (newDirection != self.direction) 
-	{
-		NSLog(@"Old direction: %@", [DGGame stringFromDirection:self.direction]);
-		NSLog(@"New direction: %@", [DGGame stringFromDirection:newDirection]);
-		
+	{		
 		SPImage *oldImage = [images objectForKey:[NSString stringWithFormat:@"tank_dir_%d", (int)direction]];
 		SPImage *newImage = [images objectForKey:[NSString stringWithFormat:@"tank_dir_%d", (int)newDirection]];
 		self.direction = newDirection;
@@ -99,6 +103,17 @@
 		[self addChild:newImage];
 	}
 	
+}
+
+- (void) onTouch:(SPTouchEvent*) event 
+{
+	SPTouch *touch = [[event touchesWithTarget:self 
+									  andPhase:SPTouchPhaseBegan] anyObject];
+    if (touch) 
+	{
+		NSLog(@"Tank was touched");
+		NSLog(@"%@", self);
+    }	
 }
 
 - (NSString *)description

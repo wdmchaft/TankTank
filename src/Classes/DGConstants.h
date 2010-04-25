@@ -6,4 +6,5 @@
 //  Copyright 2010 Dark Green Developmet. All rights reserved.
 //
 
+#define DG_SCALE_AMOUNT 1.33f
 #define DG_MOVEMENT_THRESHOLD 1.0f
