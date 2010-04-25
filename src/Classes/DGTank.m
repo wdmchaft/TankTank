@@ -5,9 +5,9 @@
 //  Created by Nathan Koch on 4/19/10.
 //  Copyright 2010 Dark Green Development. All rights reserved.
 //
-
 #import "DGTank.h"
 #import "DGGame.h"
+
 
 @implementation DGTank
 @synthesize direction, velocity, destination, images;
@@ -63,7 +63,6 @@
 
 - (void) moveBy:(float)amount
 {
-	NSLog(@"Amount to move: %f", amount);
 	if ((self.destination.x > self.x) && (abs(self.destination.x - self.x) > DG_MOVEMENT_THRESHOLD))
 	{
 		self.x = self.x + amount;
@@ -98,10 +97,13 @@
 		self.direction = newDirection;
 		[self removeChild:oldImage];
 		[self addChild:newImage];
-	} else {
-		NSLog(@"Direction stays the same");
 	}
 	
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"Tank: x=%f, y=%f, direction=%@, velocity=%f", self.x, self.y, [DGGame stringFromDirection:self.direction], self.velocity];
 }
 
 - (void) dealloc 
