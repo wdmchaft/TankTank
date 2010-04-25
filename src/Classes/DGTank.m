@@ -64,22 +64,22 @@
 - (void) moveBy:(float)amount
 {
 	NSLog(@"Amount to move: %f", amount);
-	if ((self.destination.x > self.x) && (abs(self.destination.x - self.x) > MOVEMENT_THRESHOLD))
+	if ((self.destination.x > self.x) && (abs(self.destination.x - self.x) > DG_MOVEMENT_THRESHOLD))
 	{
 		self.x = self.x + amount;
 		[self changeDirection:DIRECTION_WEST];
 	} 
-	else if ((self.destination.x < self.x) && (abs(self.destination.x - self.x) > MOVEMENT_THRESHOLD))
+	else if ((self.destination.x < self.x) && (abs(self.destination.x - self.x) > DG_MOVEMENT_THRESHOLD))
 	{
 		self.x = self.x - amount;
 		[self changeDirection:DIRECTION_EAST];
 	} 
-	else if ((self.destination.y > self.y) && (abs(self.destination.y - self.y) > MOVEMENT_THRESHOLD))
+	else if ((self.destination.y > self.y) && (abs(self.destination.y - self.y) > DG_MOVEMENT_THRESHOLD))
 	{
 		self.y = self.y + amount;
 		[self changeDirection:DIRECTION_SOUTH];
 	} 
-	else if ((self.destination.y < self.y) && (abs(self.destination.y - self.y) > MOVEMENT_THRESHOLD))
+	else if ((self.destination.y < self.y) && (abs(self.destination.y - self.y) > DG_MOVEMENT_THRESHOLD))
 	{
 		self.y = self.y - amount;
 		[self changeDirection:DIRECTION_NORTH];
