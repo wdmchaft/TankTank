@@ -7,7 +7,7 @@
 //
 
 #import "ApplicationDelegate.h"
-#import "Game.h" 
+#import "DGGame.h" 
 
 @implementation ApplicationDelegate
 
@@ -18,7 +18,7 @@
 {    
     SP_CREATE_POOL(pool);    
     
-    Game *game = [[Game alloc] initWithWidth:320 height:480];        
+    DGGame *game = [[DGGame alloc] initWithWidth:320 height:480];        
     sparrowView.stage = game;
     [sparrowView start];
     [window makeKeyAndVisible];

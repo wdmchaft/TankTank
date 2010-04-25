@@ -13,13 +13,13 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		D8337819117C843F001B2D52 /* Tank.m in Sources */ = {isa = PBXBuildFile; fileRef = D8337818117C843F001B2D52 /* Tank.m */; };
+		D8337819117C843F001B2D52 /* DGTank.m in Sources */ = {isa = PBXBuildFile; fileRef = D8337818117C843F001B2D52 /* DGTank.m */; };
 		D8C42E53117B8BFF002AEDA6 /* atlas.xml in Resources */ = {isa = PBXBuildFile; fileRef = D8C42E51117B8BFF002AEDA6 /* atlas.xml */; };
 		D8C42E54117B8BFF002AEDA6 /* tankbrigade.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C42E52117B8BFF002AEDA6 /* tankbrigade.png */; };
 		DE4A3D7A10FFB08200FDA492 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4A3D7910FFB08200FDA492 /* OpenGLES.framework */; };
 		DE4A3D7F10FFB08B00FDA492 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4A3D7E10FFB08B00FDA492 /* QuartzCore.framework */; };
 		DE4A3DB910FFB0FE00FDA492 /* libSparrow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4A3DB010FFB0DB00FDA492 /* libSparrow.a */; };
-		DE4A3DE510FFB2AF00FDA492 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DE4A3DE410FFB2AF00FDA492 /* Game.m */; };
+		DE4A3DE510FFB2AF00FDA492 /* DGGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DE4A3DE410FFB2AF00FDA492 /* DGGame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,16 +57,16 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Application_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Application-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Application-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		D8337817117C843F001B2D52 /* Tank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tank.h; sourceTree = "<group>"; };
-		D8337818117C843F001B2D52 /* Tank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tank.m; sourceTree = "<group>"; wrapsLines = 0; };
-		D833781A117C8598001B2D52 /* DirectionType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionType.h; sourceTree = "<group>"; };
+		D8337817117C843F001B2D52 /* DGTank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTank.h; sourceTree = "<group>"; };
+		D8337818117C843F001B2D52 /* DGTank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTank.m; sourceTree = "<group>"; wrapsLines = 0; };
+		D833781A117C8598001B2D52 /* DGDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDirection.h; sourceTree = "<group>"; };
 		D8C42E51117B8BFF002AEDA6 /* atlas.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = atlas.xml; sourceTree = "<group>"; };
 		D8C42E52117B8BFF002AEDA6 /* tankbrigade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tankbrigade.png; sourceTree = "<group>"; };
 		DE4A3D7910FFB08200FDA492 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		DE4A3D7E10FFB08B00FDA492 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DE4A3DA210FFB0D400FDA492 /* Sparrow.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Sparrow.xcodeproj; sourceTree = SPARROW_SRC; };
-		DE4A3DE310FFB2AF00FDA492 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
-		DE4A3DE410FFB2AF00FDA492 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		DE4A3DE310FFB2AF00FDA492 /* DGGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGame.h; sourceTree = "<group>"; };
+		DE4A3DE410FFB2AF00FDA492 /* DGGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGGame.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,11 +91,11 @@
 			children = (
 				1D3623240D0F684500981E51 /* ApplicationDelegate.h */,
 				1D3623250D0F684500981E51 /* ApplicationDelegate.m */,
-				DE4A3DE310FFB2AF00FDA492 /* Game.h */,
-				DE4A3DE410FFB2AF00FDA492 /* Game.m */,
-				D8337817117C843F001B2D52 /* Tank.h */,
-				D8337818117C843F001B2D52 /* Tank.m */,
-				D833781A117C8598001B2D52 /* DirectionType.h */,
+				DE4A3DE310FFB2AF00FDA492 /* DGGame.h */,
+				DE4A3DE410FFB2AF00FDA492 /* DGGame.m */,
+				D8337817117C843F001B2D52 /* DGTank.h */,
+				D8337818117C843F001B2D52 /* DGTank.m */,
+				D833781A117C8598001B2D52 /* DGDirection.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -252,8 +252,8 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* ApplicationDelegate.m in Sources */,
-				DE4A3DE510FFB2AF00FDA492 /* Game.m in Sources */,
-				D8337819117C843F001B2D52 /* Tank.m in Sources */,
+				DE4A3DE510FFB2AF00FDA492 /* DGGame.m in Sources */,
+				D8337819117C843F001B2D52 /* DGTank.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
