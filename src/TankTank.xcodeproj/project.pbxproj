@@ -60,6 +60,7 @@
 		D8337817117C843F001B2D52 /* DGTank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTank.h; sourceTree = "<group>"; };
 		D8337818117C843F001B2D52 /* DGTank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTank.m; sourceTree = "<group>"; wrapsLines = 0; };
 		D833781A117C8598001B2D52 /* DGDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDirection.h; sourceTree = "<group>"; };
+		D852BB6D1184F76F00FF0BBD /* DGConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGConstants.h; sourceTree = "<group>"; };
 		D8C42E51117B8BFF002AEDA6 /* atlas.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = atlas.xml; sourceTree = "<group>"; };
 		D8C42E52117B8BFF002AEDA6 /* tankbrigade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tankbrigade.png; sourceTree = "<group>"; };
 		DE4A3D7910FFB08200FDA492 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -96,6 +97,7 @@
 				D8337817117C843F001B2D52 /* DGTank.h */,
 				D8337818117C843F001B2D52 /* DGTank.m */,
 				D833781A117C8598001B2D52 /* DGDirection.h */,
+				D852BB6D1184F76F00FF0BBD /* DGConstants.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Sparrow.h"
 #import "DGDirection.h"
+#import "DGConstants.h"
 
 @class DGGame;
 @interface DGTank : SPSprite 
@@ -28,7 +29,7 @@
 - (id) initWithX:(float)anX y:(float)anY direction:(DGDirection)aDirection velocity:(float)aVelocity;
 - (id) initWithX:(float)anX y:(float)anY;
 - (id) init;
-- (void) move;
+- (void) moveBy:(float)amount;
 - (void) changeDirection:(DGDirection)newDirection;
 
 + (DGTank*) tankWithX:(float)anX y:(float)anY direction:(DGDirection)aDirection velocity:(float)aVelocity;

@@ -61,26 +61,27 @@
 	return [self initWithX:0.0f y:0.0f];
 }
 
-- (void) move
+- (void) moveBy:(float)amount
 {
-	if (self.destination.x > self.x)
+	NSLog(@"Amount to move: %f", amount);
+	if ((self.destination.x > self.x) && (abs(self.destination.x - self.x) > MOVEMENT_THRESHOLD))
 	{
-		self.x++;
+		self.x = self.x + amount;
 		[self changeDirection:DIRECTION_WEST];
 	} 
-	else if (self.destination.x < self.x)
+	else if ((self.destination.x < self.x) && (abs(self.destination.x - self.x) > MOVEMENT_THRESHOLD))
 	{
-		self.x--;
+		self.x = self.x - amount;
 		[self changeDirection:DIRECTION_EAST];
 	} 
-	else if (self.destination.y > self.y)
+	else if ((self.destination.y > self.y) && (abs(self.destination.y - self.y) > MOVEMENT_THRESHOLD))
 	{
-		self.y++;
+		self.y = self.y + amount;
 		[self changeDirection:DIRECTION_SOUTH];
 	} 
-	else if (self.destination.y < self.y)
+	else if ((self.destination.y < self.y) && (abs(self.destination.y - self.y) > MOVEMENT_THRESHOLD))
 	{
-		self.y--;
+		self.y = self.y - amount;
 		[self changeDirection:DIRECTION_NORTH];
 	}
 }
@@ -97,6 +98,8 @@
 		self.direction = newDirection;
 		[self removeChild:oldImage];
 		[self addChild:newImage];
+	} else {
+		NSLog(@"Direction stays the same");
 	}
 	
 }

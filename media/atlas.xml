@@ -1,6 +1,6 @@
 <TextureAtlas imagePath="tankbrigade.png">
-  <SubTexture name="tank_dir_0" x="495" y="99" width="32" height="32"/>
-  <SubTexture name="tank_dir_1" x="594" y="132" width="32" height="32"/>
-  <SubTexture name="tank_dir_2" x="495" y="132" width="32" height="32"/>
-  <SubTexture name="tank_dir_3" x="660" y="99" width="32" height="32"/>
+  <SubTexture name="tank_dir_0" x="496" y="100" width="30" height="30"/>
+  <SubTexture name="tank_dir_1" x="595" y="133" width="30" height="30"/>
+  <SubTexture name="tank_dir_2" x="496" y="133" width="30" height="30"/>
+  <SubTexture name="tank_dir_3" x="661" y="100" width="30" height="30"/>
 </TextureAtlas>
