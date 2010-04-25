@@ -10,6 +10,7 @@
 #import "Sparrow.h"
 #import "DirectionType.h"
 
+@class Game;
 @interface Tank : SPSprite 
 {
 	DirectionType direction;

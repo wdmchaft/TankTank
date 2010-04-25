@@ -6,10 +6,10 @@
 //  Copyright 2010 Dark Green Developmet. All rights reserved.
 //
 
-typedef enum {
+typedef enum 
+{
 	DIRECTION_NORTH,
 	DIRECTION_WEST,
 	DIRECTION_SOUTH,
 	DIRECTION_EAST
 } DirectionType;
-

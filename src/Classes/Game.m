@@ -55,4 +55,28 @@
 	[super dealloc];
 }
 
++ (NSString*) stringFromDirectionType:(DirectionType)aDirection
+{
+	NSString* result = [NSString string];
+	switch (aDirection)
+	{
+		case DIRECTION_NORTH:
+			result = @"north";
+			break;
+		case DIRECTION_WEST:
+			result = @"west";
+			break;
+		case DIRECTION_SOUTH:
+			result = @"south";
+			break;
+		case DIRECTION_EAST:
+			result = @"east";
+			break;
+		default:
+			result = nil;
+			NSLog(@"Invalid direction type!");
+	}
+	return result;
+}
+
 @end

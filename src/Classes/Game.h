@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Sparrow.h" 
+#import "Sparrow.h"
 #import "Tank.h"
+
 
 @interface Game : SPStage
 {
@@ -18,5 +19,7 @@
 
 @property (nonatomic, retain) SPSprite *sprite;
 @property (nonatomic, retain) Tank *tank;
+
++ (NSString*) stringFromDirectionType:(DirectionType)aDirection;
 
 @end

@@ -8,7 +8,6 @@
 
 #import "Tank.h"
 
-
 @implementation Tank
 @synthesize direction, velocity, destination, images;
 
@@ -89,6 +88,8 @@
 {
 	if (newDirection != self.direction) 
 	{
+		NSLog(@"New direction: %@", [Game stringFromDirectionType:newDirection]);
+		NSLog(@"Old direction: %@", [Game stringFromDirectionType:self.direction]);
 		SPImage *oldImage = [images objectForKey:[NSString stringWithFormat:@"tank_dir_%d", (int)direction]];
 		SPImage *newImage = [images objectForKey:[NSString stringWithFormat:@"tank_dir_%d", (int)newDirection]];
 		self.direction = newDirection;
