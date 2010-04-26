@@ -21,8 +21,6 @@
 		self.direction = aDirection;
 		self.velocity = aVelocity;
 		self.destination = [SPPoint pointWithX:anX y:anY];
-		self.scaleX = DG_SCALE_AMOUNT;
-		self.scaleY = DG_SCALE_AMOUNT;
 		
 		SPTextureAtlas* atlas = [[SPTextureAtlas alloc] initWithContentsOfFile:@"atlas.xml"];
 		NSLog(@"found %d textures.", atlas.count);
@@ -41,6 +39,15 @@
 		}
 		[textureNumbers release];
 		[atlas release];
+		
+		for (NSString* key in self.images)
+		{
+			SPImage *image = [self.images objectForKey:key];
+			image.scaleX = DG_SCALE_AMOUNT;
+			image.scaleY = DG_SCALE_AMOUNT;
+			image.x = -(image.width / 2);
+			image.y = -(image.height / 2);
+		}
 		
 		NSLog(@"Images: %@", self.images);
 		[self addChild:[self.images objectForKey:[NSString stringWithFormat:@"tank_dir_%d", (int)self.direction]]];

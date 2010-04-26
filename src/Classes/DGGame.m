@@ -15,7 +15,7 @@
 - (id)initWithWidth:(float)width height:(float)height
 {
     if (self = [super initWithWidth:width height:height]) {
-		self.tank = [DGTank tankWithX:10 y:100 direction:DIRECTION_WEST velocity:20];
+		self.tank = [DGTank tankWithX:10 y:100 direction:DIRECTION_WEST velocity:40];
 		[self addChild:tank];
 		
 		[self addEventListener:@selector(onEnterFrame:) 
