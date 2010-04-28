@@ -88,6 +88,7 @@
 	self.rotation = angle;
 	
 	// TODO make tank move according to rotation
+	// TODO remove all references to direction and direction enum
 }
 
 - (void) changeDirection:(DGDirection)newDirection
