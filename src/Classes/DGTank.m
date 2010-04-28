@@ -77,26 +77,17 @@
 
 - (void) moveBy:(float)amount
 {
-	if ((self.destination.x > self.x) && (abs(self.destination.x - self.x) > DG_MOVEMENT_THRESHOLD))
-	{
-		self.x = self.x + amount;
-		[self changeDirection:DIRECTION_WEST];
-	} 
-	else if ((self.destination.x < self.x) && (abs(self.destination.x - self.x) > DG_MOVEMENT_THRESHOLD))
-	{
-		self.x = self.x - amount;
-		[self changeDirection:DIRECTION_EAST];
-	} 
-	else if ((self.destination.y > self.y) && (abs(self.destination.y - self.y) > DG_MOVEMENT_THRESHOLD))
-	{
-		self.y = self.y + amount;
-		[self changeDirection:DIRECTION_SOUTH];
-	} 
-	else if ((self.destination.y < self.y) && (abs(self.destination.y - self.y) > DG_MOVEMENT_THRESHOLD))
-	{
-		self.y = self.y - amount;
-		[self changeDirection:DIRECTION_NORTH];
-	}
+	SPPoint* currentPos = [SPPoint pointWithX:self.x y:self.y];
+	float radius = self.width/2;
+	if ([SPPoint distanceFromPoint:currentPos toPoint:self.destination] < radius || [currentPos isEqual:self.destination]) return;
+	
+	float diffY = self.destination.y - self.y;
+	float diffX = self.destination.x - self.x;
+	
+	float angle = atan2f(diffY, diffX);
+	self.rotation = angle;
+	
+	// TODO make tank move according to rotation
 }
 
 - (void) changeDirection:(DGDirection)newDirection
@@ -125,7 +116,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Tank: x=%f, y=%f, direction=%@, velocity=%f", self.x, self.y, [DGGame stringFromDirection:self.direction], self.velocity];
+    return [NSString stringWithFormat:@"Tank: x=%f, y=%f, direction=%@, velocity=%f, rotation=%f", self.x, self.y, [DGGame stringFromDirection:self.direction], self.velocity, SP_R2D(self.rotation)];
 }
 
 - (void) dealloc 
