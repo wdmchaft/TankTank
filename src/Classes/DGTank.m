@@ -79,7 +79,7 @@
 {
 	SPPoint* currentPos = [SPPoint pointWithX:self.x y:self.y];
 	float radius = self.width/2;
-	if ([SPPoint distanceFromPoint:currentPos toPoint:self.destination] < radius || [currentPos isEqual:self.destination]) return;
+	if ([SPPoint distanceFromPoint:currentPos toPoint:self.destination] < radius) return;
 	
 	float diffY = self.destination.y - self.y;
 	float diffX = self.destination.x - self.x;
@@ -89,6 +89,11 @@
 	
 	// TODO make tank move according to rotation
 	// TODO remove all references to direction and direction enum
+	float xVelocity = cosf(angle) * velocity;
+	float yVelocity = sinf(angle) * velocity;
+	
+	self.x = self.x + xVelocity;
+	self.y = self.y + yVelocity;
 }
 
 - (void) changeDirection:(DGDirection)newDirection
