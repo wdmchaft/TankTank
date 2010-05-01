@@ -10,13 +10,14 @@
 
 @implementation DGGame
 
-@synthesize sprite, tank;
+@synthesize tank;
 
 - (id)initWithWidth:(float)width height:(float)height
 {
     if (self = [super initWithWidth:width height:height]) {
+		
 		self.tank = [DGTank tankWithX:100 y:200 speed:DG_BASE_SPEED];
-		[self addChild:tank];
+		[self addChild:self.tank];
 		
 		[self addEventListener:@selector(onEnterFrame:) 
 					  atObject:self 
@@ -48,9 +49,7 @@
 
 - (void) dealloc 
 {
-	self.sprite = nil;
 	self.tank = nil;
-	[sprite release];
 	[tank release];
 	[super dealloc];
 }
