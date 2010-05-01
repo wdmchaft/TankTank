@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "Sparrow.h"
-#import "DGDirection.h"
 #import "DGConstants.h"
 
 @class DGGame;
