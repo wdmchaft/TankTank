@@ -15,7 +15,7 @@
 - (id)initWithWidth:(float)width height:(float)height
 {
     if (self = [super initWithWidth:width height:height]) {
-		self.tank = [DGTank tankWithX:100 y:200 direction:DIRECTION_WEST velocity:DG_BASE_SPEED];
+		self.tank = [DGTank tankWithX:100 y:200 direction:DIRECTION_WEST speed:DG_BASE_SPEED];
 		[self addChild:tank];
 		
 		[self addEventListener:@selector(onEnterFrame:) 
@@ -31,7 +31,7 @@
 
 - (void) onEnterFrame:(SPEnterFrameEvent*) event 
 {
-	[self.tank moveBy:(event.passedTime * self.tank.velocity)];
+	[self.tank moveBy:(event.passedTime * self.tank.speed)];
 }
 
 - (void) onTouch:(SPTouchEvent*) event 

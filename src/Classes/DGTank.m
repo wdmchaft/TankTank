@@ -10,16 +10,16 @@
 
 
 @implementation DGTank
-@synthesize direction, velocity, destination, images;
+@synthesize direction, speed, destination, images;
 
-- (id) initWithX:(float)anX y:(float)anY direction:(DGDirection)aDirection velocity:(float)aVelocity 
+- (id) initWithX:(float)anX y:(float)anY direction:(DGDirection)aDirection speed:(float)aSpeed 
 {
 	if (self = [super init]) 
 	{
 		self.x = anX;
 		self.y = anY;
 		self.direction = aDirection;
-		self.velocity = aVelocity;
+		self.speed = aSpeed;
 		self.destination = [SPPoint pointWithX:anX y:anY];
 		
 		SPTextureAtlas* atlas = [[SPTextureAtlas alloc] initWithContentsOfFile:@"atlas.xml"];
@@ -67,7 +67,7 @@
 		self.x = anX;
 		self.y = anY;
 	}
-	return [self initWithX:anX y:anY direction:DIRECTION_NORTH velocity:0.0f];
+	return [self initWithX:anX y:anY direction:DIRECTION_NORTH speed:0.0f];
 }
 
 - (id) init 
@@ -89,8 +89,8 @@
 	
 	// TODO make tank move according to rotation
 	// TODO remove all references to direction and direction enum
-	float xVelocity = cosf(angle) * self.velocity;
-	float yVelocity = sinf(angle) * self.velocity;
+	float xVelocity = cosf(angle) * self.speed;
+	float yVelocity = sinf(angle) * self.speed;
 	
 	self.x = self.x + xVelocity;
 	self.y = self.y + yVelocity;
@@ -122,7 +122,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Tank: x=%f, y=%f, direction=%@, velocity=%f, rotation=%f", self.x, self.y, [DGGame stringFromDirection:self.direction], self.velocity, SP_R2D(self.rotation)];
+    return [NSString stringWithFormat:@"Tank: x=%f, y=%f, direction=%@, speed=%f, rotation=%f", self.x, self.y, [DGGame stringFromDirection:self.direction], self.speed, SP_R2D(self.rotation)];
 }
 
 - (void) dealloc 
@@ -134,14 +134,14 @@
 	[super dealloc];
 }
 
-+ (DGTank*) tankWithX:(float)anX y:(float)anY direction:(DGDirection)aDirection velocity:(float)aVelocity 
++ (DGTank*) tankWithX:(float)anX y:(float)anY direction:(DGDirection)aDirection speed:(float)aSpeed 
 {
-	return [[[DGTank alloc] initWithX:anX y:anY direction:aDirection velocity:aVelocity] autorelease];
+	return [[[DGTank alloc] initWithX:anX y:anY direction:aDirection speed:aSpeed] autorelease];
 }
 
 + (DGTank*) tankWithX:(float)anX y:(float)anY 
 {
-	return [[[DGTank alloc] initWithX:anX y:anY direction:DIRECTION_NORTH velocity:0.0f] autorelease];
+	return [[[DGTank alloc] initWithX:anX y:anY direction:DIRECTION_NORTH speed:0.0f] autorelease];
 }
 
 + (DGTank*) tank 
