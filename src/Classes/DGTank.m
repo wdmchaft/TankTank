@@ -89,8 +89,8 @@
 	
 	// TODO make tank move according to rotation
 	// TODO remove all references to direction and direction enum
-	float xVelocity = cosf(angle) * velocity;
-	float yVelocity = sinf(angle) * velocity;
+	float xVelocity = cosf(angle) * self.velocity;
+	float yVelocity = sinf(angle) * self.velocity;
 	
 	self.x = self.x + xVelocity;
 	self.y = self.y + yVelocity;
