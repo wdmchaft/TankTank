@@ -14,25 +14,22 @@
 @class DGGame;
 @interface DGTank : SPSprite 
 {
-	DGDirection direction;
 	float speed;
 	SPPoint* destination;
 	NSMutableDictionary* images;
 }
 
-@property (nonatomic, assign) DGDirection direction;
 @property (nonatomic, assign) float speed;
 @property (nonatomic, retain) SPPoint* destination;
 @property (nonatomic, retain) NSMutableDictionary* images;
 
 // designated initializer
-- (id) initWithX:(float)anX y:(float)anY direction:(DGDirection)aDirection speed:(float)aSpeed;
+- (id) initWithX:(float)anX y:(float)anY speed:(float)aSpeed;
 - (id) initWithX:(float)anX y:(float)anY;
 - (id) init;
 - (void) moveBy:(float)amount;
-- (void) changeDirection:(DGDirection)newDirection;
 
-+ (DGTank*) tankWithX:(float)anX y:(float)anY direction:(DGDirection)aDirection speed:(float)aSpeed;
++ (DGTank*) tankWithX:(float)anX y:(float)anY speed:(float)aSpeed;
 + (DGTank*) tankWithX:(float)anX y:(float)anY;
 + (DGTank*) tank;
 @end

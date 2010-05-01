@@ -20,6 +20,4 @@
 @property (nonatomic, retain) SPSprite *sprite;
 @property (nonatomic, retain) DGTank *tank;
 
-+ (NSString*) stringFromDirection:(DGDirection)aDirection;
-
 @end

@@ -10,15 +10,14 @@
 
 
 @implementation DGTank
-@synthesize direction, speed, destination, images;
+@synthesize speed, destination, images;
 
-- (id) initWithX:(float)anX y:(float)anY direction:(DGDirection)aDirection speed:(float)aSpeed 
+- (id) initWithX:(float)anX y:(float)anY speed:(float)aSpeed 
 {
 	if (self = [super init]) 
 	{
 		self.x = anX;
 		self.y = anY;
-		self.direction = aDirection;
 		self.speed = aSpeed;
 		self.destination = [SPPoint pointWithX:anX y:anY];
 		
@@ -26,18 +25,8 @@
 		NSLog(@"found %d textures.", atlas.count);
 		
 		self.images = [[NSMutableDictionary alloc] init];
-		NSArray* textureNumbers = [[NSArray alloc] initWithObjects:
-								 [NSNumber numberWithInt:DIRECTION_NORTH], 
-								 [NSNumber numberWithInt:DIRECTION_WEST],
-								 [NSNumber numberWithInt:DIRECTION_SOUTH],
-								 [NSNumber numberWithInt:DIRECTION_EAST], nil];
-					
-		for (NSNumber* oneTextureNumber in textureNumbers) 
-		{
-			[self.images setObject:[SPImage imageWithTexture:[atlas textureByName:[NSString stringWithFormat:@"tank_dir_%@", oneTextureNumber]]] 
-					   forKey:[NSString stringWithFormat:@"tank_dir_%@", oneTextureNumber]];
-		}
-		[textureNumbers release];
+		[self.images setObject:[SPImage imageWithTexture:[atlas textureByName:DG_TEXTURE_TANK]] 
+					   forKey:DG_TEXTURE_TANK];
 		[atlas release];
 		
 		for (NSString* key in self.images)
@@ -50,7 +39,7 @@
 		}
 		
 		NSLog(@"Images: %@", self.images);
-		[self addChild:[self.images objectForKey:[NSString stringWithFormat:@"tank_dir_%d", (int)self.direction]]];
+		[self addChild:[self.images objectForKey:DG_TEXTURE_TANK]];
 		NSLog(@"Width: %f", self.width);
 		
 		[self addEventListener:@selector(onTouch:) 
@@ -67,7 +56,7 @@
 		self.x = anX;
 		self.y = anY;
 	}
-	return [self initWithX:anX y:anY direction:DIRECTION_NORTH speed:0.0f];
+	return [self initWithX:anX y:anY speed:0.0f];
 }
 
 - (id) init 
@@ -87,26 +76,11 @@
 	float angle = atan2f(diffY, diffX);
 	self.rotation = angle;
 	
-	// TODO make tank move according to rotation
-	// TODO remove all references to direction and direction enum
 	float xVelocity = cosf(angle) * self.speed;
 	float yVelocity = sinf(angle) * self.speed;
 	
 	self.x = self.x + xVelocity;
 	self.y = self.y + yVelocity;
-}
-
-- (void) changeDirection:(DGDirection)newDirection
-{
-	if (newDirection != self.direction) 
-	{		
-		SPImage *oldImage = [images objectForKey:[NSString stringWithFormat:@"tank_dir_%d", (int)direction]];
-		SPImage *newImage = [images objectForKey:[NSString stringWithFormat:@"tank_dir_%d", (int)newDirection]];
-		self.direction = newDirection;
-		[self removeChild:oldImage];
-		[self addChild:newImage];
-	}
-	
 }
 
 - (void) onTouch:(SPTouchEvent*) event 
@@ -122,7 +96,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Tank: x=%f, y=%f, direction=%@, speed=%f, rotation=%f", self.x, self.y, [DGGame stringFromDirection:self.direction], self.speed, SP_R2D(self.rotation)];
+    return [NSString stringWithFormat:@"Tank: x=%f, y=%f, speed=%f, rotation=%f", self.x, self.y, self.speed, SP_R2D(self.rotation)];
 }
 
 - (void) dealloc 
@@ -134,14 +108,14 @@
 	[super dealloc];
 }
 
-+ (DGTank*) tankWithX:(float)anX y:(float)anY direction:(DGDirection)aDirection speed:(float)aSpeed 
++ (DGTank*) tankWithX:(float)anX y:(float)anY speed:(float)aSpeed 
 {
-	return [[[DGTank alloc] initWithX:anX y:anY direction:aDirection speed:aSpeed] autorelease];
+	return [[[DGTank alloc] initWithX:anX y:anY speed:aSpeed] autorelease];
 }
 
 + (DGTank*) tankWithX:(float)anX y:(float)anY 
 {
-	return [[[DGTank alloc] initWithX:anX y:anY direction:DIRECTION_NORTH speed:0.0f] autorelease];
+	return [[[DGTank alloc] initWithX:anX y:anY speed:0.0f] autorelease];
 }
 
 + (DGTank*) tank 

@@ -15,7 +15,7 @@
 - (id)initWithWidth:(float)width height:(float)height
 {
     if (self = [super initWithWidth:width height:height]) {
-		self.tank = [DGTank tankWithX:100 y:200 direction:DIRECTION_WEST speed:DG_BASE_SPEED];
+		self.tank = [DGTank tankWithX:100 y:200 speed:DG_BASE_SPEED];
 		[self addChild:tank];
 		
 		[self addEventListener:@selector(onEnterFrame:) 
@@ -53,29 +53,6 @@
 	[sprite release];
 	[tank release];
 	[super dealloc];
-}
-
-+ (NSString*) stringFromDirection:(DGDirection)aDirection
-{
-	NSString* result = nil;
-	switch (aDirection)
-	{
-		case DIRECTION_NORTH:
-			result = @"north";
-			break;
-		case DIRECTION_WEST:
-			result = @"west";
-			break;
-		case DIRECTION_SOUTH:
-			result = @"south";
-			break;
-		case DIRECTION_EAST:
-			result = @"east";
-			break;
-		default:
-			NSLog(@"Invalid direction type!");
-	}
-	return result;
 }
 
 @end
