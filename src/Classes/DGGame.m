@@ -54,7 +54,9 @@
 
 - (void) dealloc 
 {
+	self.contents = nil;
 	self.tank = nil;
+	[contents release];
 	[tank release];
 	[super dealloc];
 }
