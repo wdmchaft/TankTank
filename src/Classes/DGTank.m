@@ -45,6 +45,7 @@
 		[self addEventListener:@selector(onTankTouch:) 
 					  atObject:self 
 					   forType:SP_EVENT_TYPE_TOUCH];
+		
 	}
 	return self;
 }
