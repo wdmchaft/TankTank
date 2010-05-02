@@ -42,7 +42,7 @@
 		[self addChild:[self.images objectForKey:DG_TEXTURE_TANK]];
 		NSLog(@"Width: %f", self.width);
 		
-		[self addEventListener:@selector(onTouch:) 
+		[self addEventListener:@selector(onTankTouch:) 
 					  atObject:self 
 					   forType:SP_EVENT_TYPE_TOUCH];
 	}
@@ -83,7 +83,7 @@
 	self.y = self.y + yVelocity;
 }
 
-- (void) onTouch:(SPTouchEvent*) event 
+- (void) onTankTouch:(SPTouchEvent*) event 
 {
 	SPTouch *touch = [[event touchesWithTarget:self 
 									  andPhase:SPTouchPhaseBegan] anyObject];

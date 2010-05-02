@@ -8,16 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "Sparrow.h"
-#import "DGTank.h"
+#import "DGWorld.h"
 
 
 @interface DGGame : SPStage
 {
-	DGTank *tank;
-	SPSprite *contents;
+	
 }
-
-@property (nonatomic, retain) DGTank *tank;
-@property (nonatomic, retain) SPSprite *contents;
 
 @end
