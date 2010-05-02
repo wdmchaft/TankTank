@@ -10,14 +10,19 @@
 
 @implementation DGGame
 
-@synthesize tank;
+@synthesize tank, contents;
 
 - (id)initWithWidth:(float)width height:(float)height
 {
     if (self = [super initWithWidth:width height:height]) {
 		
+		self.contents = [[SPSprite alloc] init];
+		self.contents.rotation = SP_D2R(90);
+		self.contents.x = 320;
+		[self addChild:self.contents];
+		
 		self.tank = [DGTank tankWithX:100 y:200 speed:DG_BASE_SPEED];
-		[self addChild:self.tank];
+		[self.contents addChild:self.tank];
 		
 		[self addEventListener:@selector(onEnterFrame:) 
 					  atObject:self 
@@ -41,7 +46,7 @@
 									  andPhase:SPTouchPhaseBegan] anyObject];
     if (touch) 
 	{
-        SPPoint *touchPosition = [touch locationInSpace:self];
+        SPPoint *touchPosition = [touch locationInSpace:self.contents];
 		NSLog(@"Touched position (%f, %f)", touchPosition.x, touchPosition.y);
 		self.tank.destination = touchPosition;
     }	

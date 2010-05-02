@@ -96,7 +96,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Tank: x=%f, y=%f, speed=%f, rotation=%f", self.x, self.y, self.speed, SP_R2D(self.rotation)];
+    return [NSString stringWithFormat:@"I am a tank with an x of %.2f, y of %.2f, speed of %.2f, and rotation of %.2f", self.x, self.y, self.speed, SP_R2D(self.rotation)];
 }
 
 - (void) dealloc 

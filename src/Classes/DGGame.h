@@ -14,8 +14,10 @@
 @interface DGGame : SPStage
 {
 	DGTank *tank;
+	SPSprite *contents;
 }
 
 @property (nonatomic, retain) DGTank *tank;
+@property (nonatomic, retain) SPSprite *contents;
 
 @end
