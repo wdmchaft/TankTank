@@ -75,13 +75,25 @@
 	float diffX = self.destination.x - self.x;
 	
 	float angle = atan2f(diffY, diffX);
-	self.rotation = angle;
 	
-	float xVelocity = cosf(angle) * self.speed;
-	float yVelocity = sinf(angle) * self.speed;
+	if (angle == self.rotation) return;
+	
+	SPTween *tween = [SPTween tweenWithTarget:self time:1.0f];
+	[tween animateProperty:@"rotation" targetValue:angle];
+	[self.stage.juggler addObject:tween];
+	[tween addEventListener:@selector(onRotationTweenCompleted:)
+				   atObject:self 
+					forType:SP_EVENT_TYPE_TWEEN_COMPLETED];
+}
+
+- (void) onRotationTweenCompleted:(SPEvent*) event
+{
+	NSLog(@"Tween completed.");
+	float xVelocity = cosf(self.rotation) * self.speed;
+	float yVelocity = sinf(self.rotation) * self.speed;
 	
 	self.x = self.x + xVelocity;
-	self.y = self.y + yVelocity;
+	self.y = self.y + yVelocity;	
 }
 
 - (void) onTankTouch:(SPTouchEvent*) event 
