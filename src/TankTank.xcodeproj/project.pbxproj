@@ -15,8 +15,10 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		D8337819117C843F001B2D52 /* DGTank.m in Sources */ = {isa = PBXBuildFile; fileRef = D8337818117C843F001B2D52 /* DGTank.m */; };
 		D898AB17118DC29000F30081 /* DGWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = D898AB16118DC29000F30081 /* DGWorld.m */; };
+		D898ACBE118DDAEB00F30081 /* go_button.png in Resources */ = {isa = PBXBuildFile; fileRef = D898ACBD118DDAEB00F30081 /* go_button.png */; };
 		D8C42E53117B8BFF002AEDA6 /* atlas.xml in Resources */ = {isa = PBXBuildFile; fileRef = D8C42E51117B8BFF002AEDA6 /* atlas.xml */; };
 		D8C42E54117B8BFF002AEDA6 /* tankbrigade.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C42E52117B8BFF002AEDA6 /* tankbrigade.png */; };
+		D8E559FA118DDE42001D9960 /* fire_button.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E559F9118DDE42001D9960 /* fire_button.png */; };
 		DE4A3D7A10FFB08200FDA492 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4A3D7910FFB08200FDA492 /* OpenGLES.framework */; };
 		DE4A3D7F10FFB08B00FDA492 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4A3D7E10FFB08B00FDA492 /* QuartzCore.framework */; };
 		DE4A3DB910FFB0FE00FDA492 /* libSparrow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4A3DB010FFB0DB00FDA492 /* libSparrow.a */; };
@@ -63,8 +65,10 @@
 		D852BB6D1184F76F00FF0BBD /* DGConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGConstants.h; sourceTree = "<group>"; };
 		D898AB15118DC29000F30081 /* DGWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGWorld.h; sourceTree = "<group>"; };
 		D898AB16118DC29000F30081 /* DGWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWorld.m; sourceTree = "<group>"; };
+		D898ACBD118DDAEB00F30081 /* go_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = go_button.png; sourceTree = "<group>"; };
 		D8C42E51117B8BFF002AEDA6 /* atlas.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = atlas.xml; sourceTree = "<group>"; };
 		D8C42E52117B8BFF002AEDA6 /* tankbrigade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tankbrigade.png; sourceTree = "<group>"; };
+		D8E559F9118DDE42001D9960 /* fire_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire_button.png; sourceTree = "<group>"; };
 		DE4A3D7910FFB08200FDA492 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		DE4A3D7E10FFB08B00FDA492 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DE4A3DA210FFB0D400FDA492 /* Sparrow.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Sparrow.xcodeproj; sourceTree = SPARROW_SRC; };
@@ -160,6 +164,8 @@
 		D8C42E4E117B8B7E002AEDA6 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				D8E559F9118DDE42001D9960 /* fire_button.png */,
+				D898ACBD118DDAEB00F30081 /* go_button.png */,
 				D8C42E51117B8BFF002AEDA6 /* atlas.xml */,
 				D8C42E52117B8BFF002AEDA6 /* tankbrigade.png */,
 			);
@@ -245,6 +251,8 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				D8C42E53117B8BFF002AEDA6 /* atlas.xml in Resources */,
 				D8C42E54117B8BFF002AEDA6 /* tankbrigade.png in Resources */,
+				D898ACBE118DDAEB00F30081 /* go_button.png in Resources */,
+				D8E559FA118DDE42001D9960 /* fire_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

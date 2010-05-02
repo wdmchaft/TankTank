@@ -13,7 +13,15 @@
 
 @interface DGGame : SPStage
 {
-	
+	SPSprite* contents;
+	DGWorld* world;
+	SPButton* goButton;
+	SPButton* fireButton;
 }
+
+@property (nonatomic, retain) SPSprite* contents;
+@property (nonatomic, retain) DGWorld* world;
+@property (nonatomic, retain) SPButton* goButton;
+@property (nonatomic, retain) SPButton* fireButton;
 
 @end
