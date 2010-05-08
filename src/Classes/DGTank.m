@@ -10,7 +10,7 @@
 
 
 @implementation DGTank
-@synthesize speed, destination, images;
+@synthesize speed, destination, images, isRotating;
 
 - (id) initWithX:(float)anX y:(float)anY speed:(float)aSpeed 
 {
@@ -20,6 +20,7 @@
 		self.y = anY;
 		self.speed = aSpeed;
 		self.destination = [SPPoint pointWithX:anX y:anY];
+		self.isRotating = FALSE;
 		
 		SPTextureAtlas* atlas = [[SPTextureAtlas alloc] initWithContentsOfFile:@"atlas.xml"];
 		NSLog(@"found %d textures.", atlas.count);
@@ -65,18 +66,23 @@
 	return [self initWithX:0.0f y:0.0f];
 }
 
-- (void) moveBy:(float)amount
+- (void) destinationFromTouch:(SPPoint*)touchPosition
 {
 	SPPoint* currentPos = [SPPoint pointWithX:self.x y:self.y];
-	float radius = self.width/2;
-	if ([SPPoint distanceFromPoint:currentPos toPoint:self.destination] < radius) return;
-	
+	if (![touchPosition isEqual:currentPos])
+	{
+		self.destination = touchPosition;
+		[self rotateToNewAngle];
+	}
+}
+
+- (void) rotateToNewAngle
+{
+	self.isRotating = TRUE;
 	float diffY = self.destination.y - self.y;
 	float diffX = self.destination.x - self.x;
 	
 	float angle = atan2f(diffY, diffX);
-	
-	if (angle == self.rotation) return;
 	
 	SPTween *tween = [SPTween tweenWithTarget:self time:1.0f];
 	[tween animateProperty:@"rotation" targetValue:angle];
@@ -86,15 +92,37 @@
 					forType:SP_EVENT_TYPE_TWEEN_COMPLETED];
 }
 
+- (BOOL) canMove
+{
+	SPPoint* currentPos = [SPPoint pointWithX:self.x y:self.y];
+	float radius = self.width/2;
+	BOOL status = TRUE;
+	if ([SPPoint distanceFromPoint:currentPos toPoint:self.destination] < radius || self.isRotating)
+	{
+		status = FALSE;
+	}
+	return status;
+}
+
+- (void) moveBy:(float)amount
+{
+	if ([self canMove])
+	{
+		float xVelocity = cosf(self.rotation) * self.speed;
+		float yVelocity = sinf(self.rotation) * self.speed;
+		
+		self.x = self.x + xVelocity;
+		self.y = self.y + yVelocity;
+	}
+}
+
 - (void) onRotationTweenCompleted:(SPEvent*) event
 {
 	NSLog(@"Tween completed.");
-	float xVelocity = cosf(self.rotation) * self.speed;
-	float yVelocity = sinf(self.rotation) * self.speed;
-	
-	self.x = self.x + xVelocity;
-	self.y = self.y + yVelocity;	
+	self.isRotating = FALSE;
 }
+
+
 
 - (void) onTankTouch:(SPTouchEvent*) event 
 {

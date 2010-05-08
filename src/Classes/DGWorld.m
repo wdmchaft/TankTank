@@ -54,7 +54,7 @@
 	{
 		SPPoint *touchPosition = [touch locationInSpace:self];
 		NSLog(@"Touched position (%f, %f)", touchPosition.x, touchPosition.y);
-		self.tank.destination = touchPosition;
+		[self.tank destinationFromTouch:touchPosition];
     }	
 }
 

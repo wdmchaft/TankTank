@@ -16,16 +16,21 @@
 	float speed;
 	SPPoint* destination;
 	NSMutableDictionary* images;
+	BOOL isRotating;
 }
 
 @property (nonatomic, assign) float speed;
 @property (nonatomic, retain) SPPoint* destination;
 @property (nonatomic, retain) NSMutableDictionary* images;
+@property (nonatomic, assign) BOOL isRotating;
 
 // designated initializer
 - (id) initWithX:(float)anX y:(float)anY speed:(float)aSpeed;
 - (id) initWithX:(float)anX y:(float)anY;
-- (id) init;
+
+- (void) destinationFromTouch:(SPPoint*)point;
+- (void) rotateToNewAngle;
+- (BOOL) canMove;
 - (void) moveBy:(float)amount;
 
 + (DGTank*) tankWithX:(float)anX y:(float)anY speed:(float)aSpeed;

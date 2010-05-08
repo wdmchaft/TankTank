@@ -9,3 +9,5 @@
 #define DG_SCALE_AMOUNT 1.5f
 #define DG_BASE_SPEED 1.5f
 #define DG_TEXTURE_TANK @"tank_default"
+
+#define DG_EVENT_TYPE_WORLD_TOUCHED @"worldTouched"
