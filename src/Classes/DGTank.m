@@ -69,7 +69,7 @@
 - (void) destinationFromTouch:(SPPoint*)touchPosition
 {
 	SPPoint* currentPos = [SPPoint pointWithX:self.x y:self.y];
-	if (![touchPosition isEqual:currentPos])
+	if (![touchPosition isEqual:currentPos] || self.isRotating)
 	{
 		self.destination = touchPosition;
 		[self rotateToNewAngle];
@@ -83,6 +83,16 @@
 	float diffX = self.destination.x - self.x;
 	
 	float angle = atan2f(diffY, diffX);
+	float angleInDegrees = SP_R2D(angle);
+	float currentRotationInDegrees = SP_R2D(self.rotation);
+	if (angleInDegrees < 0)
+	{
+		NSLog(@"angle < 0: %.2f", angleInDegrees);
+		angleInDegrees = 360 + angleInDegrees;
+		angle = SP_D2R(angleInDegrees);
+	}
+	NSLog(@"Current rotation: %.2f, new angle: %.2f", 
+		  currentRotationInDegrees, angleInDegrees);
 	
 	SPTween *tween = [SPTween tweenWithTarget:self time:1.0f];
 	[tween animateProperty:@"rotation" targetValue:angle];
@@ -90,6 +100,8 @@
 	[tween addEventListener:@selector(onRotationTweenCompleted:)
 				   atObject:self 
 					forType:SP_EVENT_TYPE_TWEEN_COMPLETED];
+
+
 }
 
 - (BOOL) canMove
