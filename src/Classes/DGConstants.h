@@ -6,8 +6,10 @@
 //  Copyright 2010 Dark Green Developmet. All rights reserved.
 //
 
-#define DG_SCALE_AMOUNT 1.5f
 #define DG_BASE_SPEED 1.5f
-#define DG_TEXTURE_TANK @"tank_default"
+
+#define DG_TEXTURE_TANK_IDLE @"tank_idle"
+#define DG_TEXTURE_TANK_MOVE_01 @"tank_move_01"
+#define DG_TEXTURE_TANK_MOVE_02 @"tank_move_02"
 
 #define DG_EVENT_TYPE_WORLD_TOUCHED @"worldTouched"

@@ -10,7 +10,7 @@
 
 
 @implementation DGTank
-@synthesize speed, destination, images, blocked, willMove;
+@synthesize speed, destination, images, blocked, willMove, movingImages;
 
 - (id) initWithX:(float)anX y:(float)anY speed:(float)aSpeed 
 {
@@ -26,22 +26,27 @@
 		NSLog(@"found %d textures.", atlas.count);
 		
 		self.images = [[NSMutableDictionary alloc] init];
-		[self.images setObject:[SPImage imageWithTexture:[atlas textureByName:DG_TEXTURE_TANK]] 
-					   forKey:DG_TEXTURE_TANK];
+		[self.images setObject:[SPImage imageWithTexture:[atlas textureByName:DG_TEXTURE_TANK_IDLE]] 
+					   forKey:DG_TEXTURE_TANK_IDLE];
+		[self.images setObject:[SPImage imageWithTexture:[atlas textureByName:DG_TEXTURE_TANK_MOVE_01]] 
+						forKey:DG_TEXTURE_TANK_MOVE_01];
+		[self.images setObject:[SPImage imageWithTexture:[atlas textureByName:DG_TEXTURE_TANK_MOVE_02]] 
+						forKey:DG_TEXTURE_TANK_MOVE_02];
 		[atlas release];
 		
+		self.movingImages = [[NSMutableArray alloc] init];
 		for (NSString* key in self.images)
 		{
 			SPImage *image = [self.images objectForKey:key];
-			image.scaleX = DG_SCALE_AMOUNT;
-			image.scaleY = DG_SCALE_AMOUNT;
 			image.x = -(image.width / 2);
 			image.y = -(image.height / 2);
+			
+			if (key != DG_TEXTURE_TANK_IDLE)
+			{
+				[self.movingImages addObject:image];
+			}
 		}
-		
-		NSLog(@"Images: %@", self.images);
-		[self addChild:[self.images objectForKey:DG_TEXTURE_TANK]];
-		NSLog(@"Width: %f", self.width);
+		[self addChild:[self.images objectForKey:DG_TEXTURE_TANK_IDLE]];
 		
 		[self addEventListener:@selector(onTankTouch:) 
 					  atObject:self 
@@ -110,7 +115,8 @@
 	SPPoint* currentPos = [SPPoint pointWithX:self.x y:self.y];
 	float radius = self.width/2;
 	BOOL status = TRUE;
-	if ([SPPoint distanceFromPoint:currentPos toPoint:self.destination] < radius || self.blocked || !self.willMove)
+	float distance = [SPPoint distanceFromPoint:currentPos toPoint:self.destination];
+	if ( distance < radius || self.blocked || !self.willMove)
 	{
 		status = FALSE;
 	}
@@ -121,6 +127,7 @@
 {
 	if ([self canMove])
 	{
+		
 		float xVelocity = cosf(self.rotation) * self.speed;
 		float yVelocity = sinf(self.rotation) * self.speed;
 		
@@ -148,15 +155,18 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"I am a tank with an x of %.2f, y of %.2f, speed of %.2f, and rotation of %.2f", self.x, self.y, self.speed, SP_R2D(self.rotation)];
+    return [NSString stringWithFormat:@"I am a tank with an x of %.2f, y of %.2f, speed of %.2f, width/height of %.2f/%.2f and rotation of %.2f", 
+			self.x, self.y, self.speed, self.width, self.height, SP_R2D(self.rotation)];
 }
 
 - (void) dealloc 
 {
 	self.destination = nil;
 	self.images = nil;
+	self.movingImages = nil;
 	[destination release];
 	[images release];
+	[movingImages release];
 	[super dealloc];
 }
 

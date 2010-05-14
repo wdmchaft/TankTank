@@ -16,6 +16,7 @@
 	float speed;
 	SPPoint* destination;
 	NSMutableDictionary* images;
+	NSMutableArray* movingImages;
 	BOOL blocked;
 	BOOL willMove;
 }
@@ -23,6 +24,7 @@
 @property (nonatomic, assign) float speed;
 @property (nonatomic, retain) SPPoint* destination;
 @property (nonatomic, retain) NSMutableDictionary* images;
+@property (nonatomic, retain) NSMutableArray* movingImages;
 @property (nonatomic, assign) BOOL blocked;
 @property (nonatomic, assign) BOOL willMove;
 
