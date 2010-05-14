@@ -10,7 +10,7 @@
 
 @implementation DGGame
 
-@synthesize contents, world, goButton, fireButton;
+@synthesize contents, world, fireButton;
 
 - (id)initWithWidth:(float)width height:(float)height
 {
@@ -26,15 +26,6 @@
 		self.world = [[DGWorld alloc] init];
 		[self.contents addChild:world];
 		
-		self.goButton = [SPButton buttonWithUpState:[SPTexture textureWithContentsOfFile:@"go_button.png"]];
-		self.goButton.x = 0;
-		self.goButton.y = self.world.height - self.goButton.height;
-		[self.contents addChild:self.goButton];
-	
-		[self.goButton addEventListener:@selector(onGoButtonPressed:) 
-					  atObject:self 
-					   forType:SP_EVENT_TYPE_TRIGGERED];
-		
 		self.fireButton = [SPButton buttonWithUpState:[SPTexture textureWithContentsOfFile:@"fire_button.png"]];
 		self.fireButton.x = self.world.width - self.fireButton.width;
 		self.fireButton.y = self.world.height - self.fireButton.height;
@@ -47,11 +38,6 @@
     return self;
 }
 
-- (void) onGoButtonPressed:(SPEvent*) event 
-{
-	NSLog(@"Go Button Pressed!");
-}
-
 - (void) onFireButtonPressed:(SPEvent*) event
 {
 	NSLog(@"Fire Button Pressed!");
@@ -59,12 +45,12 @@
 
 - (void) dealloc 
 {
-	self.goButton = nil;
 	self.world = nil;
 	self.contents = nil;
-	[goButton release];
+	self.fireButton = nil;
 	[world release];
 	[contents release];
+	[fireButton release];
 	[super dealloc];
 }
 

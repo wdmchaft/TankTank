@@ -10,7 +10,7 @@
 
 
 @implementation DGTank
-@synthesize speed, destination, images, isRotating;
+@synthesize speed, destination, images, blocked, willMove;
 
 - (id) initWithX:(float)anX y:(float)anY speed:(float)aSpeed 
 {
@@ -20,7 +20,7 @@
 		self.y = anY;
 		self.speed = aSpeed;
 		self.destination = [SPPoint pointWithX:anX y:anY];
-		self.isRotating = FALSE;
+		self.blocked = FALSE;
 		
 		SPTextureAtlas* atlas = [[SPTextureAtlas alloc] initWithContentsOfFile:@"atlas.xml"];
 		NSLog(@"found %d textures.", atlas.count);
@@ -66,19 +66,20 @@
 	return [self initWithX:0.0f y:0.0f];
 }
 
-- (void) destinationFromTouch:(SPPoint*)touchPosition
+- (void) destinationFromTouch:(SPPoint*)touchPosition willMove:(BOOL)movingStatus
 {
 	SPPoint* currentPos = [SPPoint pointWithX:self.x y:self.y];
-	if (![touchPosition isEqual:currentPos] || self.isRotating)
+	if (![touchPosition isEqual:currentPos] || self.blocked)
 	{
 		self.destination = touchPosition;
 		[self rotateToNewAngle];
+		self.willMove = movingStatus;
 	}
 }
 
 - (void) rotateToNewAngle
 {
-	self.isRotating = TRUE;
+	self.blocked = TRUE;
 	float diffY = self.destination.y - self.y;
 	float diffX = self.destination.x - self.x;
 	
@@ -109,7 +110,7 @@
 	SPPoint* currentPos = [SPPoint pointWithX:self.x y:self.y];
 	float radius = self.width/2;
 	BOOL status = TRUE;
-	if ([SPPoint distanceFromPoint:currentPos toPoint:self.destination] < radius || self.isRotating)
+	if ([SPPoint distanceFromPoint:currentPos toPoint:self.destination] < radius || self.blocked || !self.willMove)
 	{
 		status = FALSE;
 	}
@@ -131,10 +132,8 @@
 - (void) onRotationTweenCompleted:(SPEvent*) event
 {
 	NSLog(@"Tween completed.");
-	self.isRotating = FALSE;
+	self.blocked = FALSE;
 }
-
-
 
 - (void) onTankTouch:(SPTouchEvent*) event 
 {
