@@ -1,6 +1,12 @@
-### TankTank
+## TankTank
 
 TankTank is a simple Tank game I'm building in Sparrow (an Objective-C game framework for iPhone and iPad).
+
+### Gameplay Notes
+
+* Single tap rotates Tank.
+* Double tap rotates and moves Tank.
+* Fire button doesn't work yet.
 
 #### Credits
 
