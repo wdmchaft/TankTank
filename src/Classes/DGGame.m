@@ -7,6 +7,7 @@
 //
 
 #import "DGGame.h" 
+#import "DGMedia.h"
 
 @implementation DGGame
 
@@ -15,6 +16,9 @@
 - (id)initWithWidth:(float)width height:(float)height
 {
     if (self = [super initWithWidth:width height:height]) {
+		
+		// load texture atlas
+		[DGMedia initTextures];
 		
 		// translate the game into landscape mode
 		self.contents = [[SPSprite alloc] init];
@@ -34,6 +38,8 @@
 		[self.fireButton addEventListener:@selector(onFireButtonPressed:) 
 								 atObject:self 
 								  forType:SP_EVENT_TYPE_TRIGGERED];
+		
+		
     }
     return self;
 }
@@ -45,6 +51,7 @@
 
 - (void) dealloc 
 {
+	[DGMedia releaseTextures];
 	self.world = nil;
 	self.contents = nil;
 	self.fireButton = nil;

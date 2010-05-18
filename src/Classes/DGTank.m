@@ -22,17 +22,14 @@
 		self.destination = [SPPoint pointWithX:anX y:anY];
 		self.blocked = FALSE;
 		
-		SPTextureAtlas* atlas = [[SPTextureAtlas alloc] initWithContentsOfFile:@"atlas.xml"];
-		NSLog(@"found %d textures.", atlas.count);
 		
 		self.images = [[NSMutableDictionary alloc] init];
-		[self.images setObject:[SPImage imageWithTexture:[atlas textureByName:DG_TEXTURE_TANK_IDLE]] 
+		[self.images setObject:[SPImage imageWithTexture:[DGMedia atlasTexture:DG_TEXTURE_TANK_IDLE]] 
 					   forKey:DG_TEXTURE_TANK_IDLE];
-		[self.images setObject:[SPImage imageWithTexture:[atlas textureByName:DG_TEXTURE_TANK_MOVE_01]] 
+		[self.images setObject:[SPImage imageWithTexture:[DGMedia atlasTexture:DG_TEXTURE_TANK_MOVE_01]] 
 						forKey:DG_TEXTURE_TANK_MOVE_01];
-		[self.images setObject:[SPImage imageWithTexture:[atlas textureByName:DG_TEXTURE_TANK_MOVE_02]] 
+		[self.images setObject:[SPImage imageWithTexture:[DGMedia atlasTexture:DG_TEXTURE_TANK_MOVE_02]] 
 						forKey:DG_TEXTURE_TANK_MOVE_02];
-		[atlas release];
 		
 		self.movingImages = [[NSMutableArray alloc] init];
 		for (NSString* key in self.images)
