@@ -37,6 +37,8 @@
 			SPImage *image = [self.images objectForKey:key];
 			image.x = -(image.width / 2);
 			image.y = -(image.height / 2);
+			image.scaleX = DG_SCALING;
+			image.scaleY = DG_SCALING;
 			
 			if (key != DG_TEXTURE_TANK_IDLE)
 			{

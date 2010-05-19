@@ -16,16 +16,18 @@
 		self.width = 320;
 		self.height = 480;
 		
+		// set background for world
 		SPQuad *background = [SPQuad quadWithWidth:480 height:320];
 		background.x = 0;
 		background.y = 0;
 		background.color = 0x000000;
 		[self addChild:background];
 		
-		NSLog(@"background: %@", background);
+		// create and display player 1 tank
 		self.tank = [DGTank tankWithX:100 y:200 speed:DG_BASE_SPEED];
 		[self addChild:self.tank];
 		
+		// world event listeners
 		[self addEventListener:@selector(onWorldEnterFrame:) 
 					  atObject:self 
 					   forType:SP_EVENT_TYPE_ENTER_FRAME];
@@ -34,7 +36,7 @@
 					  atObject:self 
 					   forType:SP_EVENT_TYPE_TOUCH];
 		
-		NSLog(@"World x=%.2f, y=%.2f, width=%.2f, height=%.2f");
+		NSLog(@"World x=%.2f, y=%.2f, width=%.2f, height=%.2f", self.x, self.y, self.width, self.height);
 		
 	}
 	return self;
