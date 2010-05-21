@@ -18,7 +18,7 @@
 	NSMutableDictionary* images;
 	NSMutableArray* movingImages;
 	BOOL blocked;
-	BOOL willMove;
+	BOOL moving;
 }
 
 @property (nonatomic, assign) float speed;
@@ -26,7 +26,7 @@
 @property (nonatomic, retain) NSMutableDictionary* images;
 @property (nonatomic, retain) NSMutableArray* movingImages;
 @property (nonatomic, assign) BOOL blocked;
-@property (nonatomic, assign) BOOL willMove;
+@property (nonatomic, assign) BOOL moving;
 
 // designated initializer
 - (id) initWithX:(float)anX y:(float)anY speed:(float)aSpeed;

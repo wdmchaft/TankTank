@@ -52,11 +52,11 @@
 									  andPhase:SPTouchPhaseBegan] anyObject];
     if (touch) 
 	{
-		BOOL movingStatus = FALSE;
-		if (touch.tapCount > 1) movingStatus = TRUE;
+		BOOL isMoving = FALSE;
+		if (touch.tapCount > 1) isMoving = TRUE;
 		SPPoint *touchPosition = [touch locationInSpace:self];
 		NSLog(@"Touched position (%f, %f)", touchPosition.x, touchPosition.y);
-		[self.tank destinationFromTouch:touchPosition willMove:movingStatus];
+		[self.tank destinationFromTouch:touchPosition willMove:isMoving];
     }	
 }
 
