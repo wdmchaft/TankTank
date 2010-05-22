@@ -87,32 +87,30 @@
 	float diffY = self.destination.y - self.y;
 	float diffX = self.destination.x - self.x;
 	
-	float angle = atan2f(diffY, diffX);
+	float newAngle = SP_R2D(atan2f(diffY, diffX));
+	float theRotation = SP_R2D(self.rotation);
+	float dist = fabs(newAngle - theRotation);
 	
-	float degAngle = SP_R2D(angle);
-	float degRotation = SP_R2D(self.rotation);
-	float dist = fabs(degAngle - degRotation);
-	
-	degRotation = fmod(degRotation, 360.0f);
+	theRotation = fmod(theRotation, 360.0f);
 	
 	if (dist > 180)
 	{
-		if (degAngle > degRotation)
+		if (newAngle > theRotation)
 		{
-			degAngle -= 360;
+			newAngle -= 360;
 		}
 		else
 		{
-			degAngle += 360;
+			newAngle += 360;
 		}
 	}
 	
-	float destAngle = SP_D2R(degAngle);
+	float newAngleInRadians = SP_D2R(newAngle);
 	
-	if (angle != self.rotation)
+	if (newAngleInRadians != self.rotation)
 	{
 		SPTween *tween = [SPTween tweenWithTarget:self time:1.0f];
-		[tween animateProperty:@"rotation" targetValue:destAngle];
+		[tween animateProperty:@"rotation" targetValue:newAngleInRadians];
 		[self.stage.juggler addObject:tween];
 		[tween addEventListener:@selector(onRotationTweenCompleted:)
 					   atObject:self 
