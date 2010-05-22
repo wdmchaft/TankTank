@@ -87,30 +87,33 @@
 	float diffY = self.destination.y - self.y;
 	float diffX = self.destination.x - self.x;
 	
-	float newAngle = SP_R2D(atan2f(diffY, diffX));
-	float theRotation = SP_R2D(self.rotation);
-	float dist = fabs(newAngle - theRotation);
+	// calculate the angle from the origin and destination points
+	float newAngle = atan2f(diffY, diffX);
 	
-	theRotation = fmod(theRotation, 360.0f);
+	// the absolute distance between the new angle and the current rotation
+	float distance = fabs(newAngle - self.rotation);
 	
-	if (dist > 180)
+	// normalize rotation so it's not > than 360 degrees
+	float nRotation = fmod(self.rotation, TWO_PI); 
+	
+	// if the distance is greater than 180, 
+	// we correct so that it doesn't go the wrong way round
+	if (distance > PI)
 	{
-		if (newAngle > theRotation)
+		if (newAngle > nRotation)
 		{
-			newAngle -= 360;
+			newAngle -= TWO_PI;
 		}
 		else
 		{
-			newAngle += 360;
+			newAngle += TWO_PI;
 		}
 	}
 	
-	float newAngleInRadians = SP_D2R(newAngle);
-	
-	if (newAngleInRadians != self.rotation)
+	if (newAngle != self.rotation)
 	{
 		SPTween *tween = [SPTween tweenWithTarget:self time:1.0f];
-		[tween animateProperty:@"rotation" targetValue:newAngleInRadians];
+		[tween animateProperty:@"rotation" targetValue:newAngle];
 		[self.stage.juggler addObject:tween];
 		[tween addEventListener:@selector(onRotationTweenCompleted:)
 					   atObject:self 
@@ -147,7 +150,7 @@
 
 - (void) onRotationTweenCompleted:(SPEvent*) event
 {
-	NSLog(@"Tween completed.");
+	NSLog(@"Rotation wween completed.");
 	self.blocked = FALSE;
 }
 
