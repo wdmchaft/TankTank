@@ -10,7 +10,7 @@
 
 
 @implementation DGTank
-@synthesize speed, destination, images, blocked, willMove, movingImages;
+@synthesize speed, destination, images, blocked, moving, movingImages;
 
 - (id) initWithX:(float)anX y:(float)anY speed:(float)aSpeed 
 {
@@ -70,14 +70,14 @@
 	return [self initWithX:0.0f y:0.0f];
 }
 
-- (void) destinationFromTouch:(SPPoint*)touchPosition willMove:(BOOL)movingStatus
+- (void) destinationFromTouch:(SPPoint*)touchPosition willMove:(BOOL)isMoving
 {
 	SPPoint* currentPos = [SPPoint pointWithX:self.x y:self.y];
 	if (![touchPosition isEqual:currentPos] || self.blocked)
 	{
 		self.destination = touchPosition;
 		[self rotateToNewAngle];
-		self.willMove = movingStatus;
+		self.moving = isMoving;
 	}
 }
 
@@ -88,16 +88,12 @@
 	float diffX = self.destination.x - self.x;
 	
 	float angle = atan2f(diffY, diffX);
-	float angleInDegrees = SP_R2D(angle);
-	float currentRotationInDegrees = SP_R2D(self.rotation);
-	if (angleInDegrees < 0)
+	
+	if (angle < 0)
 	{
-		NSLog(@"angle < 0: %.2f", angleInDegrees);
-		angleInDegrees = 360 + angleInDegrees;
-		angle = SP_D2R(angleInDegrees);
+		angle += TWO_PI;
 	}
-	NSLog(@"Current rotation: %.2f, new angle: %.2f", 
-		  currentRotationInDegrees, angleInDegrees);
+	
 	
 	SPTween *tween = [SPTween tweenWithTarget:self time:1.0f];
 	[tween animateProperty:@"rotation" targetValue:angle];
@@ -115,7 +111,7 @@
 	float radius = self.width/2;
 	BOOL status = TRUE;
 	float distance = [SPPoint distanceFromPoint:currentPos toPoint:self.destination];
-	if ( distance < radius || self.blocked || !self.willMove)
+	if ( distance < radius || self.blocked || !self.moving)
 	{
 		status = FALSE;
 	}
