@@ -150,7 +150,7 @@
 
 - (void) onRotationTweenCompleted:(SPEvent*) event
 {
-	NSLog(@"Rotation wween completed.");
+	NSLog(@"Rotation tween completed.");
 	self.blocked = FALSE;
 }
 

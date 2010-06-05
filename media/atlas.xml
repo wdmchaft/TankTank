@@ -1,5 +1,5 @@
 <TextureAtlas imagePath="tankbrigade.png">
-  <SubTexture name="tank_idle" x="595" y="133" width="30" height="30"/>
-  <SubTexture name="tank_move_01" x="528" y="100" width="30" height="30"/>
-  <SubTexture name="tank_move_02" x="528" y="132" width="30" height="30"/>
+  <SubTexture name="tank_idle" x="676" y="313" width="30" height="30"/>
+  <SubTexture name="tank_move_01" x="709" y="313" width="30" height="30"/>
+  <SubTexture name="tank_move_02" x="742" y="313" width="30" height="30"/>
 </TextureAtlas>

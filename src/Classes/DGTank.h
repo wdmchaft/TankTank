@@ -11,7 +11,7 @@
 #import "DGConstants.h"
 
 @class DGGame;
-@interface DGTank : SPSprite 
+@interface DGTank : SPSprite
 {
 	float speed;
 	SPPoint* destination;

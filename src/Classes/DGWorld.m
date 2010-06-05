@@ -7,7 +7,7 @@
 
 @implementation DGWorld
 
-@synthesize tank;
+@synthesize tank, tiles;
 
 - (id) init
 {
@@ -26,6 +26,26 @@
 		// create and display player 1 tank
 		self.tank = [DGTank tankWithX:100 y:200 speed:DG_BASE_SPEED];
 		[self addChild:self.tank];
+		
+		// create tiles for world
+		// TODO take array (from plist) and turn into mutable array
+		self.tiles = [[NSMutableArray alloc] initWithCapacity:DG_TILES_TOTAL];
+		int currentX = 0;
+		int currentY = 0;
+		for (int i = 0; i < DG_TILES_HIGH; i++) 
+		{
+			for (int j = 0; j < DG_TILES_WIDE; j++)
+			{
+				DGTile* newTile;
+				newTile = [[DGTile alloc] initWithX:currentX y:currentY tileType:DG_TILE_WALL];
+				NSLog(@"%@", newTile);
+				[self addChild:newTile];
+				[self.tiles addObject:newTile];
+				[newTile release];
+				currentX += 32;
+			}
+			currentY += 32;
+		}
 		
 		// world event listeners
 		[self addEventListener:@selector(onWorldEnterFrame:) 
@@ -67,6 +87,7 @@
 	[self removeEventListenersAtObject:self forType:SP_EVENT_TYPE_ENTER_FRAME];
 	[self removeEventListenersAtObject:self forType:SP_EVENT_TYPE_TOUCH];
 	self.tank = nil;
+	self.tiles = nil;
 	[tank release];
 	[super dealloc];
 }
