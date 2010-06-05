@@ -12,10 +12,12 @@
 @interface DGWorld : SPSprite {
 	DGTank *tank;
 	NSMutableArray *tiles;
+	
 }
 
 @property (nonatomic, retain) NSMutableArray *tiles;
 @property (nonatomic, retain) DGTank *tank;
+
 
 - (id) init;
 

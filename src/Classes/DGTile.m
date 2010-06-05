@@ -24,7 +24,7 @@
 		switch (self.tileType)
 		{
 			case DG_TILE_WALL:
-				self.image = [SPImage imageWithTexture:[DGMedia atlasTexture:DG_TEXTURE_TANK_IDLE]];
+				self.image = [SPImage imageWithTexture:[DGMedia atlasTexture:DG_TEXTURE_WALL]];
 				[self addChild:self.image];
 				self.isWalkable = FALSE;
 				break;

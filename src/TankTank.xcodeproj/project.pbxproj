@@ -17,6 +17,7 @@
 		D8337819117C843F001B2D52 /* DGTank.m in Sources */ = {isa = PBXBuildFile; fileRef = D8337818117C843F001B2D52 /* DGTank.m */; };
 		D898AB17118DC29000F30081 /* DGWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = D898AB16118DC29000F30081 /* DGWorld.m */; };
 		D898ACBE118DDAEB00F30081 /* go_button.png in Resources */ = {isa = PBXBuildFile; fileRef = D898ACBD118DDAEB00F30081 /* go_button.png */; };
+		D8B5446E11BAB45F00A536EB /* WorldMap.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8B5446D11BAB45F00A536EB /* WorldMap.plist */; };
 		D8B8C7C711A2191700EDC596 /* DGMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B8C7C611A2191700EDC596 /* DGMedia.m */; };
 		D8C42E53117B8BFF002AEDA6 /* atlas.xml in Resources */ = {isa = PBXBuildFile; fileRef = D8C42E51117B8BFF002AEDA6 /* atlas.xml */; };
 		D8C42E54117B8BFF002AEDA6 /* tankbrigade.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C42E52117B8BFF002AEDA6 /* tankbrigade.png */; };
@@ -70,6 +71,7 @@
 		D898AB15118DC29000F30081 /* DGWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGWorld.h; sourceTree = "<group>"; };
 		D898AB16118DC29000F30081 /* DGWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWorld.m; sourceTree = "<group>"; };
 		D898ACBD118DDAEB00F30081 /* go_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = go_button.png; sourceTree = "<group>"; };
+		D8B5446D11BAB45F00A536EB /* WorldMap.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = WorldMap.plist; sourceTree = "<group>"; };
 		D8B8C7C511A2191700EDC596 /* DGMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGMedia.h; sourceTree = "<group>"; };
 		D8B8C7C611A2191700EDC596 /* DGMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGMedia.m; sourceTree = "<group>"; };
 		D8C42E51117B8BFF002AEDA6 /* atlas.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = atlas.xml; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Application-Info.plist */,
+				D8B5446D11BAB45F00A536EB /* WorldMap.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				D8C42E54117B8BFF002AEDA6 /* tankbrigade.png in Resources */,
 				D898ACBE118DDAEB00F30081 /* go_button.png in Resources */,
 				D8E559FA118DDE42001D9960 /* fire_button.png in Resources */,
+				D8B5446E11BAB45F00A536EB /* WorldMap.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

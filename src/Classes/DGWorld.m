@@ -23,29 +23,61 @@
 		background.color = 0x000000;
 		[self addChild:background];
 		
+		NSString* path = [[NSBundle mainBundle] pathForResource:@"WorldMap" 
+														 ofType:@"plist"];
+		NSMutableArray *tempArray = [[NSMutableArray alloc] initWithContentsOfFile:path];
+		
+		NSUInteger rowIndex = 0;
+		self.tiles = [[NSMutableArray alloc] initWithCapacity:DG_TILES_HIGH];
+		for (NSArray *row in tempArray)
+		{
+			NSMutableArray *rowArray = [[NSMutableArray alloc] initWithCapacity:DG_TILES_WIDE];
+			[self.tiles insertObject:rowArray atIndex:rowIndex];
+			 NSLog(@"Row: %@", row);
+			 NSUInteger colIndex = 0;
+			 for (NSNumber *typeNum in row)
+			 {
+				 // calculate the x and y pos of the tile from the indexes
+				 NSUInteger currentX = colIndex * DG_SINGLE_TILE_WIDTH;
+				 NSUInteger currentY = rowIndex * DG_SINGLE_TILE_HEIGHT;
+				 
+				 DGTile *newTile;
+				 newTile = [[DGTile alloc] initWithX:currentX y:currentY tileType:[typeNum integerValue]];
+				 [self addChild:newTile];
+				 [[self.tiles objectAtIndex:rowIndex] insertObject:newTile atIndex:colIndex];
+				 [newTile release];
+				 colIndex++;
+			 }
+			 rowIndex++;
+			[rowArray release];
+		}
+		[tempArray release];
+		
 		// create and display player 1 tank
 		self.tank = [DGTank tankWithX:100 y:200 speed:DG_BASE_SPEED];
 		[self addChild:self.tank];
 		
 		// create tiles for world
 		// TODO take array (from plist) and turn into mutable array
-		self.tiles = [[NSMutableArray alloc] initWithCapacity:DG_TILES_TOTAL];
-		int currentX = 0;
-		int currentY = 0;
-		for (int i = 0; i < DG_TILES_HIGH; i++) 
-		{
-			for (int j = 0; j < DG_TILES_WIDE; j++)
-			{
-				DGTile* newTile;
-				newTile = [[DGTile alloc] initWithX:currentX y:currentY tileType:DG_TILE_WALL];
-				NSLog(@"%@", newTile);
-				[self addChild:newTile];
-				[self.tiles addObject:newTile];
-				[newTile release];
-				currentX += 32;
-			}
-			currentY += 32;
-		}
+		
+		
+//		self.tiles = [[NSMutableArray alloc] initWithCapacity:DG_TILES_TOTAL];
+//		int currentX = 0;
+//		int currentY = 0;
+//		for (int i = 0; i < DG_TILES_HIGH; i++) 
+//		{
+//			for (int j = 0; j < DG_TILES_WIDE; j++)
+//			{
+//				DGTile* newTile;
+//				newTile = [[DGTile alloc] initWithX:currentX y:currentY tileType:DG_TILE_WALL];
+//				NSLog(@"%@", newTile);
+//				[self addChild:newTile];
+//				[self.tiles addObject:newTile];
+//				[newTile release];
+//				currentX += 32;
+//			}
+//			currentY += 32;
+//		}
 		
 		// world event listeners
 		[self addEventListener:@selector(onWorldEnterFrame:) 
@@ -89,6 +121,7 @@
 	self.tank = nil;
 	self.tiles = nil;
 	[tank release];
+	[tiles release];
 	[super dealloc];
 }
 
