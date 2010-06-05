@@ -28,6 +28,10 @@
 				[self addChild:self.image];
 				self.isWalkable = FALSE;
 				break;
+			case DG_TILE_GREEN_WALL:
+				self.image = [SPImage imageWithTexture:[DGMedia atlasTexture:DG_TEXTURE_GREEN_WALL]];
+				[self addChild:self.image];
+				self.isWalkable = FALSE;
 			default:
 				self.image = nil;
 				self.isWalkable = TRUE;

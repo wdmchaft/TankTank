@@ -15,6 +15,7 @@
 #define DG_TEXTURE_TANK_MOVE_01 @"tank_move_01"
 #define DG_TEXTURE_TANK_MOVE_02 @"tank_move_02"
 #define DG_TEXTURE_BLUE_WALL @"blue_wall"
+#define DG_TEXTURE_GREEN_WALL @"green_wall"
 
 #define DG_EVENT_TYPE_WORLD_TOUCHED @"worldTouched"
 
@@ -27,3 +28,4 @@
 
 #define DG_TILE_EMPTY 0
 #define DG_TILE_BLUE_WALL 1
+#define DG_TILE_GREEN_WALL 2
