@@ -9,6 +9,8 @@
 #define DG_BASE_SPEED 1.5f
 #define DG_SCALING 1.0666f
 
+#define DG_WORLD_BLUE @"BlueWorld"
+
 #define DG_TEXTURE_TANK_IDLE @"tank_idle"
 #define DG_TEXTURE_TANK_MOVE_01 @"tank_move_01"
 #define DG_TEXTURE_TANK_MOVE_02 @"tank_move_02"
