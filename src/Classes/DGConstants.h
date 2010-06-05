@@ -12,7 +12,7 @@
 #define DG_TEXTURE_TANK_IDLE @"tank_idle"
 #define DG_TEXTURE_TANK_MOVE_01 @"tank_move_01"
 #define DG_TEXTURE_TANK_MOVE_02 @"tank_move_02"
-#define DG_TEXTURE_WALL @"wall"
+#define DG_TEXTURE_BLUE_WALL @"blue_wall"
 
 #define DG_EVENT_TYPE_WORLD_TOUCHED @"worldTouched"
 
@@ -24,4 +24,4 @@
 #define DG_TILES_TOTAL (DG_TILES_WIDE * DG_TILES_HIGH)
 
 #define DG_TILE_EMPTY 0
-#define DG_TILE_WALL 1
+#define DG_TILE_BLUE_WALL 1

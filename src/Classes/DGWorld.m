@@ -54,7 +54,7 @@
 		[tempArray release];
 		
 		// create and display player 1 tank
-		self.tank = [DGTank tankWithX:100 y:200 speed:DG_BASE_SPEED];
+		self.tank = [DGTank tankWithX:96 y:128 speed:DG_BASE_SPEED];
 		[self addChild:self.tank];
 		
 		// create tiles for world

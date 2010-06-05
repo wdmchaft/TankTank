@@ -2,5 +2,5 @@
   <SubTexture name="tank_idle" x="676" y="313" width="30" height="30"/>
   <SubTexture name="tank_move_01" x="709" y="313" width="30" height="30"/>
   <SubTexture name="tank_move_02" x="742" y="313" width="30" height="30"/>
-  <SubTexture name="wall" x="279" y="246" width="32" height="32"/>
+  <SubTexture name="blue_wall" x="279" y="246" width="32" height="32"/>
 </TextureAtlas>
