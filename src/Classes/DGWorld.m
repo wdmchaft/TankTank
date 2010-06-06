@@ -96,12 +96,15 @@
 									  andPhase:SPTouchPhaseBegan] anyObject];
     if (touch) 
 	{
-		BOOL isMoving = FALSE;
-		if (touch.tapCount > 1) isMoving = TRUE;
+		
 		SPPoint *touchPosition = [touch locationInSpace:self];
-		NSLog(@"Touched position (%f, %f)", touchPosition.x, touchPosition.y);
 		DGTile* touchedTile = [self getTileAtX:touchPosition.x y:touchPosition.y];
-		NSLog(@"%@", touchedTile);
+		NSLog(@"Touched %@", touchedTile);
+		BOOL isMoving = FALSE;
+		if (touch.tapCount > 1 && touchedTile.isWalkable)
+		{
+			isMoving = TRUE;
+		}
 		[self.tank destinationFromTouch:touchPosition willMove:isMoving];
     }	
 }
