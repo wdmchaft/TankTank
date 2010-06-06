@@ -8,6 +8,9 @@ TankTank is a simple Tank game I'm building in Sparrow (an Objective-C game fram
 * Double tap rotates and moves Tank.
 * Fire button doesn't work yet.
 
+### Requires
+* [Sparrow Framework 0.8](http://www.sparrow-framework.org/)
+
 #### Credits
 
 Sprites courtesy of [SpriteLib GPL](http://www.flyingyogi.com/fun/spritelib.html). 
