@@ -37,7 +37,6 @@
 		{
 			NSMutableArray *rowArray = [[NSMutableArray alloc] initWithCapacity:DG_TILES_WIDE];
 			[self.tiles insertObject:rowArray atIndex:rowIndex];
-			 NSLog(@"Row: %@", row);
 			 NSUInteger colIndex = 0;
 			 for (NSNumber *typeNum in row)
 			 {
@@ -72,11 +71,18 @@
 					  atObject:self 
 					   forType:SP_EVENT_TYPE_TOUCH];
 		
-		NSLog(@"World x=%.2f, y=%.2f, width=%.2f, height=%.2f", self.x, self.y, self.width, self.height);
 		
 	}
 	return self;
 	
+}
+
+- (DGTile*) getTileAtX:(float)theX y:(float)theY
+{
+	NSUInteger tileX = (NSUInteger) (theX / 32);
+	NSUInteger tileY = (NSUInteger) (theY  / 32);
+	NSLog(@"TileX: %d, TileY: %d", tileX, tileY);
+	return [[self.tiles objectAtIndex:tileY] objectAtIndex:tileX];
 }
 
 - (void) onWorldEnterFrame:(SPEnterFrameEvent*) event 
@@ -94,6 +100,8 @@
 		if (touch.tapCount > 1) isMoving = TRUE;
 		SPPoint *touchPosition = [touch locationInSpace:self];
 		NSLog(@"Touched position (%f, %f)", touchPosition.x, touchPosition.y);
+		DGTile* touchedTile = [self getTileAtX:touchPosition.x y:touchPosition.y];
+		NSLog(@"%@", touchedTile);
 		[self.tank destinationFromTouch:touchPosition willMove:isMoving];
     }	
 }

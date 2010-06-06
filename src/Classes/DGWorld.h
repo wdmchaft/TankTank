@@ -20,5 +20,6 @@
 
 
 - (id) init;
+- (DGTile*) getTileAtX:(float)theX y:(float)theY;
 
 @end

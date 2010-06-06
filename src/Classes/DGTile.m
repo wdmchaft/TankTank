@@ -51,8 +51,10 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"\n I am a tile with: \n\t type: %d \n\t walkable: %d \n\t image: %@ \n",
-			self.tileType, self.isWalkable, self.image];
+    NSUInteger tileX = (NSUInteger) (self.x / 32);
+	NSUInteger tileY = (NSUInteger) (self.y / 32);
+	return [NSString stringWithFormat:@"\n I am a tile at location: %d,%d with: \n\t type: %d \n\t walkable: %d \n\t image: %@ \n",
+			tileX, tileY, self.tileType, self.isWalkable, self.image];
 }
 
 - (void)dealloc {
