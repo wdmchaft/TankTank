@@ -55,7 +55,7 @@
 		[tempDict release];
 		
 		// create and display player 1 tank
-		self.tank = [DGTank tankWithX:96 y:128 speed:DG_BASE_SPEED];
+		self.tank = [DGTank tankWithX:96 y:128 speed:DG_TANK_BASE_SPEED];
 		[self addChild:self.tank];
 		
 		// world event listeners

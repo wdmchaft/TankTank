@@ -37,8 +37,8 @@
 			SPImage *image = [self.images objectForKey:key];
 			image.x = -(image.width / 2);
 			image.y = -(image.height / 2);
-			image.scaleX = DG_SCALING;
-			image.scaleY = DG_SCALING;
+			image.scaleX = DG_TANK_SCALING;
+			image.scaleY = DG_TANK_SCALING;
 			
 			if (key != DG_TEXTURE_TANK_IDLE)
 			{
@@ -112,7 +112,7 @@
 	
 	if (newAngle != self.rotation)
 	{
-		SPTween *tween = [SPTween tweenWithTarget:self time:1.0f];
+		SPTween *tween = [SPTween tweenWithTarget:self time:DG_TANK_ROTATION_SPEED];
 		[tween animateProperty:@"rotation" targetValue:newAngle];
 		[self.stage.juggler addObject:tween];
 		[tween addEventListener:@selector(onRotationTweenCompleted:)

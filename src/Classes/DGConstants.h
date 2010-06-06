@@ -6,9 +6,6 @@
 //  Copyright 2010 Dark Green Developmet. All rights reserved.
 //
 
-#define DG_BASE_SPEED 1.5f
-#define DG_SCALING 0.8f
-
 #define DG_WORLD_BLUE @"BlueWorld"
 
 #define DG_TEXTURE_TANK_IDLE @"tank_idle"
@@ -29,3 +26,7 @@
 #define DG_TILE_EMPTY 0
 #define DG_TILE_BLUE_WALL 1
 #define DG_TILE_GREEN_WALL 2
+
+#define DG_TANK_SCALING 0.8f
+#define DG_TANK_ROTATION_SPEED 1.0f
+#define DG_TANK_BASE_SPEED 1.5f
