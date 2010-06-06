@@ -23,11 +23,14 @@
 		background.color = 0x000000;
 		[self addChild:background];
 		
+		// get world map from WorldMap.plist
 		NSString* path = [[NSBundle mainBundle] pathForResource:@"WorldMap" 
 														 ofType:@"plist"];
+		// the plist contains a dictionary with an array of arrays (e.g. 2D array) for each level
 		NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
 		NSMutableArray *tempArray = [tempDict objectForKey:DG_WORLD_BLUE];
 		
+		// iterate through temp array, adding each row to our tiles array
 		NSUInteger rowIndex = 0;
 		self.tiles = [[NSMutableArray alloc] initWithCapacity:DG_TILES_HIGH];
 		for (NSArray *row in tempArray)
@@ -42,6 +45,8 @@
 				 NSUInteger currentX = colIndex * DG_SINGLE_TILE_WIDTH;
 				 NSUInteger currentY = rowIndex * DG_SINGLE_TILE_HEIGHT;
 				 
+				 // create a new tile of the type defined in the plist 
+				 // at the appropriate location and insert in tiles array
 				 DGTile *newTile;
 				 newTile = [[DGTile alloc] initWithX:currentX y:currentY tileType:[typeNum integerValue]];
 				 [self addChild:newTile];
