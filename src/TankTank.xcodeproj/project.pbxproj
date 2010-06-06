@@ -15,6 +15,9 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		D81B1E7911B56587006E93DC /* DGTile.m in Sources */ = {isa = PBXBuildFile; fileRef = D81B1E7811B56587006E93DC /* DGTile.m */; };
 		D8337819117C843F001B2D52 /* DGTank.m in Sources */ = {isa = PBXBuildFile; fileRef = D8337818117C843F001B2D52 /* DGTank.m */; };
+		D851986B11BBF7A1000FAEF6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D851986A11BBF7A1000FAEF6 /* AVFoundation.framework */; };
+		D851986D11BBF7A1000FAEF6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D851986C11BBF7A1000FAEF6 /* AudioToolbox.framework */; };
+		D851986F11BBF7A1000FAEF6 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D851986E11BBF7A1000FAEF6 /* OpenAL.framework */; };
 		D898AB17118DC29000F30081 /* DGWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = D898AB16118DC29000F30081 /* DGWorld.m */; };
 		D898ACBE118DDAEB00F30081 /* go_button.png in Resources */ = {isa = PBXBuildFile; fileRef = D898ACBD118DDAEB00F30081 /* go_button.png */; };
 		D8B5446E11BAB45F00A536EB /* WorldMap.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8B5446D11BAB45F00A536EB /* WorldMap.plist */; };
@@ -67,6 +70,9 @@
 		D81B1E7811B56587006E93DC /* DGTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTile.m; sourceTree = "<group>"; };
 		D8337817117C843F001B2D52 /* DGTank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTank.h; sourceTree = "<group>"; };
 		D8337818117C843F001B2D52 /* DGTank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTank.m; sourceTree = "<group>"; wrapsLines = 0; };
+		D851986A11BBF7A1000FAEF6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D851986C11BBF7A1000FAEF6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D851986E11BBF7A1000FAEF6 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D852BB6D1184F76F00FF0BBD /* DGConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGConstants.h; sourceTree = "<group>"; };
 		D898AB15118DC29000F30081 /* DGWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGWorld.h; sourceTree = "<group>"; };
 		D898AB16118DC29000F30081 /* DGWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWorld.m; sourceTree = "<group>"; };
@@ -95,6 +101,9 @@
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				DE4A3D7A10FFB08200FDA492 /* OpenGLES.framework in Frameworks */,
 				DE4A3D7F10FFB08B00FDA492 /* QuartzCore.framework in Frameworks */,
+				D851986B11BBF7A1000FAEF6 /* AVFoundation.framework in Frameworks */,
+				D851986D11BBF7A1000FAEF6 /* AudioToolbox.framework in Frameworks */,
+				D851986F11BBF7A1000FAEF6 /* OpenAL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +179,9 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				D851986A11BBF7A1000FAEF6 /* AVFoundation.framework */,
+				D851986C11BBF7A1000FAEF6 /* AudioToolbox.framework */,
+				D851986E11BBF7A1000FAEF6 /* OpenAL.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
