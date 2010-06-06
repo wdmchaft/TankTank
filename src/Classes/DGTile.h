@@ -21,6 +21,9 @@
 @property (nonatomic, assign) BOOL isWalkable;
 @property (nonatomic, assign) int tileType;
 
+@property (nonatomic, readonly) NSString* tileTypeAsString;
+@property (nonatomic, readonly) NSString* isWalkableAsString;
+
 // designated initializer
 - (id) initWithX:(float)theX y:(float)theY tileType:(int)theTileType;
 - (id) initWithX:(float)theX y:(float)theY;

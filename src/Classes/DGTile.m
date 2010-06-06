@@ -35,7 +35,6 @@
 			default:
 				self.image = nil;
 				self.isWalkable = TRUE;
-				break;
 		}
 	}
 	return self;
@@ -49,12 +48,43 @@
     return [self initWithX:0 y:0];
 }
 
+- (NSString *)tileTypeAsString
+{
+	NSString* tileAsString;
+	switch (self.tileType)
+	{
+		case DG_TILE_BLUE_WALL:
+			tileAsString = @"Blue Wall";
+			break;
+		case DG_TILE_GREEN_WALL:
+			tileAsString = @"Green Wall";
+			break;
+		default:
+			tileAsString = @"Empty";
+	}
+	return tileAsString;
+}
+
+- (NSString *)isWalkableAsString
+{
+	NSString* output;
+	if (self.isWalkable)
+	{
+		output = @"True";
+	}
+	else
+	{
+		output = @"False";
+	}
+	return output;
+}
+
 - (NSString *)description
 {
     NSUInteger tileX = (NSUInteger) (self.x / 32);
 	NSUInteger tileY = (NSUInteger) (self.y / 32);
-	return [NSString stringWithFormat:@"\n I am a tile at location: %d,%d with: \n\t type: %d \n\t walkable: %d \n\t image: %@ \n",
-			tileX, tileY, self.tileType, self.isWalkable, self.image];
+	return [NSString stringWithFormat:@"\n I am a tile at location: %d,%d with: \n\t type: %@ \n\t walkable: %@ \n\t image: %@ \n",
+			tileX, tileY, self.tileTypeAsString, self.isWalkableAsString, self.image];
 }
 
 - (void)dealloc {
