@@ -7,7 +7,7 @@
 //
 
 #define DG_BASE_SPEED 1.5f
-#define DG_SCALING 1.0666f
+#define DG_SCALING 0.8f
 
 #define DG_WORLD_BLUE @"BlueWorld"
 
