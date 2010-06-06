@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Sparrow.h"
 #import "DGConstants.h"
+#import "DGTile.h"
 
 @class DGGame;
 @interface DGTank : SPSprite
@@ -34,6 +35,8 @@
 
 - (void) destinationFromTouch:(SPPoint*)point willMove:(BOOL)movingStatus;
 - (void) rotateToNewAngle;
+- (SPPoint*) projectMove:(float)amount;
+- (BOOL) hasCollided:(DGTile*)theTile;
 - (BOOL) canMove;
 - (void) moveBy:(float)amount;
 

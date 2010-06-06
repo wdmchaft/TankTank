@@ -135,6 +135,39 @@
 	return status;
 }
 
+- (SPPoint*) projectMove:(float)amount
+{
+	float newX = self.x;
+	float newY = self.y;
+	if ([self canMove])
+	{
+		
+		float xVelocity = cosf(self.rotation) * self.speed;
+		float yVelocity = sinf(self.rotation) * self.speed;
+		
+		newX = self.x + xVelocity;
+		newY = self.y + yVelocity;
+	}
+	return [SPPoint pointWithX:newX y:newY];
+}
+
+- (BOOL) hasCollided:(DGTile*)theTile
+{
+
+	BOOL status = FALSE;
+	SPPoint *p1 = [SPPoint pointWithX:self.x y:self.y];
+	SPPoint *p2 = [SPPoint pointWithX:theTile.x y:theTile.y];
+	float distance = [SPPoint distanceFromPoint:p1 toPoint:p2];
+	float radius1 = self.width/2;
+	float radius2 = theTile.width/2;
+	if (distance < radius1 + radius2)
+	{
+		NSLog(@"Collision!");
+		status = TRUE;
+	}
+	return status;
+}
+
 - (void) moveBy:(float)amount
 {
 	if ([self canMove])

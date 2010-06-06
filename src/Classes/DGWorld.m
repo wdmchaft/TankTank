@@ -87,7 +87,21 @@
 
 - (void) onWorldEnterFrame:(SPEnterFrameEvent*) event 
 {
-	[self.tank moveBy:(event.passedTime * self.tank.speed)];
+	if ([self.tank canMove])
+	{
+		float moveAmount = event.passedTime * self.tank.speed;
+		SPPoint* newPoint = [self.tank projectMove:moveAmount];
+		
+		if ([self.tank hasCollided:(DGTile*)[self getTileAtX:newPoint.x y:newPoint.y]])
+		{
+			NSLog(@"Collision!");
+		}
+		else
+		{
+			[self.tank moveBy:moveAmount];
+		}
+	}
+
 }
 
 - (void) onWorldTouch:(SPTouchEvent*) event 

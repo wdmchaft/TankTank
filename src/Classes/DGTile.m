@@ -37,6 +37,8 @@
 				self.isWalkable = TRUE;
 		}
 	}
+	self.image.x = -(self.image.width / 2);
+	self.image.y = -(self.image.height / 2);
 	return self;
 }
 
